@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Diwali, Meri Lassi (Nakchadi) ✨ — The Official Peace Treaty</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        night: '#070510',
+                        deepnight: '#120924',
+                        amberdiya: '#F59E0B',
+                        marigold: '#FBBF24',
+                        emeraldcustom: '#047857',
+                        khatbg: '#101223',
+                        paper: '#FAF7F0'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #070510;
+            color: #F3F4F6;
+            overflow-x: hidden;
+        }
+        .font-serif-custom { font-family: 'Playfair Display', serif; }
+        .font-handwriting { font-family: 'Caveat', cursive; }
+
+        .glass-card {
+            background: rgba(16, 14, 34, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(251, 191, 36, 0.22);
+        }
+
+        /* Custom SVG Diya Flame Flicker */
+        @keyframes flameFlicker {
+            0%, 100% { transform: scaleY(1) rotate(-1deg); opacity: 0.95; }
+            50% { transform: scaleY(1.12) scaleX(0.94) rotate(2deg); opacity: 1; }
+        }
+        .flame-active {
+            transform-origin: center bottom;
+            animation: flameFlicker 1.2s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.95));
+        }
+
+        /* Chapter 2: Exact Video Replica Styles for Wax-Sealed Khat */
+        .khat-envelope {
+            position: relative;
+            background: linear-gradient(180deg, rgba(20, 23, 44, 0.94) 0%, rgba(13, 15, 30, 0.98) 100%);
+            border: 1px solid rgba(217, 169, 78, 0.28);
+            border-radius: 14px;
+            padding: 10px;
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.65), inset 0 0 25px rgba(251, 191, 36, 0.03);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .khat-envelope:hover {
+            border-color: rgba(251, 191, 36, 0.5);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.75), 0 0 20px rgba(245, 158, 11, 0.12);
+        }
+        .khat-inner-dashed {
+            position: relative;
+            border: 1px dashed rgba(217, 169, 78, 0.24);
+            border-radius: 10px;
+            padding: 20px 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 165px;
+            z-index: 2;
+        }
+        .khat-flap-svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Glowing Terracotta/Orange-Amber Wax Seal from Video */
+        .wax-seal-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 9999px;
+            background: radial-gradient(circle at 35% 30%, #FF814A 0%, #EA580C 60%, #9A3412 100%);
+            box-shadow: 0 0 22px rgba(234, 88, 12, 0.55), 0 6px 14px rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+            position: relative;
+            z-index: 5;
+        }
+        .khat-envelope:hover .wax-seal-btn {
+            transform: scale(1.08);
+            box-shadow: 0 0 28px rgba(249, 115, 22, 0.8), 0 8px 16px rgba(0, 0, 0, 0.7);
+        }
+        .wax-seal-inner-ring {
+            width: 42px;
+            height: 42px;
+            border-radius: 9999px;
+            border: 1.5px solid rgba(255, 237, 213, 0.5);
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.35);
+            pointer-events: none;
+        }
+        .khat-envelope.is-open .wax-seal-btn {
+            width: 44px;
+            height: 44px;
+            margin-top: 12px;
+        }
+        .khat-envelope.is-open .wax-seal-inner-ring {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* Ruled Cream Paper Note Card that Unfolds on Tap */
+        .khat-paper-wrapper {
+            display: grid;
+            grid-template-rows: 0fr;
+            opacity: 0;
+            transition: grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(16px) scale(0.94);
+            width: 100%;
+            max-width: 295px;
+            z-index: 6;
+        }
+        .khat-envelope.is-open .khat-paper-wrapper {
+            grid-template-rows: 1fr;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .khat-paper-inner {
+            overflow: hidden;
+            padding: 6px 4px 10px 4px;
+        }
+        .khat-ruled-paper {
+            background-color: #FAF7F0;
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 25px,
+                rgba(180, 168, 145, 0.32) 25px,
+                rgba(180, 168, 145, 0.32) 26px
+            );
+            border-radius: 6px;
+            padding: 18px 16px 14px 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.2);
+            border: 1px solid #E6DEC8;
+            color: #2B3040;
+            text-align: center;
+        }
+        .tilt-left { transform: rotate(-1.1deg); }
+        .tilt-right { transform: rotate(1.1deg); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn { animation: fadeIn 0.35s ease-out forwards; }
+
+        @keyframes modalPop {
+            0% { opacity: 0; transform: scale(0.84) translateY(18px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-modalPop { animation: modalPop 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-between relative selection:bg-marigold selection:text-night">
+
+    <!-- Background Ambient Stars Canvas -->
+    <canvas id="starsCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Full-Screen 1-Second Sparkle Burst Overlay Canvas -->
+    <canvas id="sparkleBurstCanvas" class="fixed inset-0 pointer-events-none z-[100] hidden"></canvas>
+
+    <!-- Custom Non-Blocking Toast Notification -->
+    <div id="customToast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[110] hidden px-4 py-2.5 rounded-2xl bg-night/95 border border-marigold text-marigold text-xs font-semibold shadow-2xl backdrop-blur-md transition-all duration-300 text-center w-[88%] max-w-xs">
+        <span id="customToastText">✨ Notification</span>
+    </div>
+
+    <!-- LO.MP4 ROSE VIDEO POPUP MODAL (Triggers on 'Chalo, thoda sa maaf kiya ✨') -->
+    <div id="roseVideoModal" class="fixed inset-0 z-[95] hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card border-2 border-marigold/70 rounded-3xl max-w-sm w-full p-5 space-y-4 shadow-[0_0_50px_rgba(251,191,36,0.3)] relative animate-modalPop text-center">
+            <!-- Top Right Close Button -->
+            <button onclick="closeRoseModal()" class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-gray-200 flex items-center justify-center text-sm font-bold transition z-20" aria-label="Close modal">
+                ✕
+            </button>
+
+            <div class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-amberdiya/20 border border-amberdiya/40 text-marigold text-[11px] font-semibold">
+                <span>🌹 Special Peace Offering</span>
+            </div>
+
+            <h3 class="font-serif-custom text-xl font-bold text-white">Shukriya, Meri Lassi! ✨</h3>
+
+            <!-- Video Container for lo.mp4 -->
+            <div class="relative w-full aspect-[4/5] max-h-64 mx-auto rounded-2xl overflow-hidden border-2 border-marigold/40 bg-black shadow-xl flex items-center justify-center">
+                <video id="rosePopupVideo" src="lo.mp4" loop playsinline controls class="w-full h-full object-cover" onerror="handleVideoFallback()"></video>
+                <!-- Graceful Fallback if lo.mp4 is not in the same folder -->
+                <div id="roseVideoFallback" class="hidden absolute inset-0 bg-gradient-to-b from-deepnight to-night p-4 flex-col items-center justify-center text-center space-y-2.5">
+                    <div class="text-5xl animate-bounce">👦🏻🌹</div>
+                    <p class="font-handwriting text-2xl text-marigold">"Tum ho mera pyar..." 🎵</p>
+                    <p class="text-[11px] text-gray-300 leading-relaxed">
+                        (Keep <code class="text-marigold bg-white/10 px-1.5 py-0.5 rounded">lo.mp4</code> in the same folder as <code class="text-marigold bg-white/10 px-1.5 py-0.5 rounded">index.html</code> to play the cute kid offering a red rose video!)
+                    </p>
+                </div>
+            </div>
+
+            <p class="font-handwriting text-xl text-marigold leading-snug">
+                "Yeh lo Lassi ji, gussa khatam karne ke liye chota sa phool 🌹✨"
+            </p>
+
+            <button onclick="closeRoseModal()" class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-amberdiya to-marigold text-night font-bold text-xs shadow-lg hover:brightness-110 transition flex items-center justify-center space-x-2">
+                <span>Accept Rose & Write Reply 💌</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile-Optimized Sleek Sticky Header -->
+    <header class="w-full max-w-md mx-auto px-3.5 py-2.5 z-40 flex items-center justify-between gap-2 border-b border-white/10 glass-card sticky top-0 rounded-b-2xl shadow-lg">
+        <div class="flex items-center space-x-2.5 min-w-0">
+            <div class="w-8 h-8 rounded-full bg-amberdiya/20 flex items-center justify-center border border-amberdiya/40 shrink-0">
+                <span class="text-marigold text-base">🪔</span>
+            </div>
+            <div class="truncate">
+                <h1 class="font-serif-custom text-sm font-bold text-marigold tracking-wide truncate">Nakchadi's Peace Treaty</h1>
+                <p class="text-[10px] text-gray-400 truncate">For Meri Lassi 🥛 • Zero Pressure</p>
+            </div>
+        </div>
+        <button id="audioToggle" onclick="toggleAudio()" class="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-emeraldcustom/30 border border-emeraldcustom/50 text-emerald-300 hover:bg-emeraldcustom/40 transition whitespace-nowrap shrink-0 flex items-center space-x-1">
+            <span>🎵 Chimes: Off</span>
+        </button>
+    </header>
+
+    <!-- Main Mobile-First Container -->
+    <main class="w-full max-w-md mx-auto px-3.5 py-5 z-10 flex flex-col space-y-9 pb-28">
+
+        <!-- HERO SECTION (with original cute cat GIF) -->
+        <section class="text-center space-y-3.5 pt-1">
+            <div class="inline-block px-3 py-1 rounded-full bg-amberdiya/10 border border-amberdiya/30 text-marigold text-[11px] font-semibold tracking-wider uppercase">
+                ✨ Special Diwali Edition for Deekshu
+            </div>
+            <h2 class="font-serif-custom text-3xl sm:text-4xl font-bold text-white leading-tight">
+                Happy Diwali, <span class="text-marigold underline decoration-amberdiya/50 underline-offset-8">Meri Lassi</span>! 🥛
+            </h2>
+            <p class="text-xs sm:text-sm text-gray-300 max-w-xs mx-auto leading-relaxed">
+                Almost ek saal ho gaya bina baat kiye... Maana tumne block kiya hai, par coding ka sahara lekar yeh tum tak pahuncha hi diya!
+            </p>
+
+            <!-- Restored Original Cute Cat GIF Card -->
+            <div class="my-3 p-4 rounded-2xl glass-card border border-marigold/25 flex flex-col items-center space-y-2.5 max-w-xs mx-auto shadow-xl">
+                <div class="w-24 h-24 rounded-xl overflow-hidden border border-amber-400/30 shadow-lg bg-black/50 flex items-center justify-center">
+                    <img src="42154.gif"
+                         onerror="this.onerror=null; this.src='https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif';"
+                         alt="Pretty Please Cat"
+                         class="w-full h-full object-cover">
+                </div>
+                <p class="font-handwriting text-marigold text-lg sm:text-xl leading-snug">
+                    "Pretty please ek baar niche tak scroll kar lo Nakchadi! 🥺"
+                </p>
+            </div>
+        </section>
+
+        <!-- CHAPTER 1: LIGHT THE 3 DIYAS (Clean, NO GIF inside) -->
+        <section class="glass-card p-5 rounded-3xl space-y-4 shadow-2xl relative overflow-hidden">
+            <div class="flex items-center justify-between gap-2">
+                <span class="text-[11px] font-bold tracking-wider text-amber-400 uppercase truncate">Chapter I • Light Diyas</span>
+                <span id="diyasCount" class="text-[11px] bg-amberdiya/20 px-2.5 py-0.5 rounded-full text-marigold font-semibold whitespace-nowrap shrink-0">0/3 Lit</span>
+            </div>
+
+            <div class="space-y-1 text-center">
+                <h3 class="font-serif-custom text-xl font-bold text-white">Bring Back Some Light ✨</h3>
+                <p class="text-xs text-gray-300 leading-relaxed">Tap each terracotta diya below to clear the darkness and read 3 short notes:</p>
+            </div>
+
+            <!-- 3 Interactive Terracotta Diyas Grid -->
+            <div class="grid grid-cols-3 gap-2.5 pt-1">
+                <!-- Diya 1 -->
+                <button onclick="lightDiya(1)" id="diyaBtn1" class="p-3 rounded-2xl bg-black/45 border border-white/10 flex flex-col items-center justify-center space-y-1.5 hover:border-marigold/50 transition group">
+                    <svg class="w-11 h-11 overflow-visible" viewBox="0 0 64 64">
+                        <g id="flame1" class="opacity-20 transition-opacity duration-300">
+                            <path d="M32 8 C26 18, 24 26, 32 32 C40 26, 38 18, 32 8 Z" fill="#F59E0B"/>
+                            <path d="M32 14 C29 20, 28 25, 32 30 C36 25, 35 20, 32 14 Z" fill="#FEF08A"/>
+                        </g>
+                        <path d="M12 34 Q32 40 52 34 L46 50 Q32 56 18 50 Z" fill="#9A3412" stroke="#FBBF24" stroke-width="1.5"/>
+                        <ellipse cx="32" cy="34" rx="20" ry="4" fill="#7C2D12" stroke="#F59E0B" stroke-width="1"/>
+                    </svg>
+                    <span class="text-xs font-bold text-gray-200">Diya 1</span>
+                    <span id="diyaSub1" class="text-[10px] text-gray-400">Tap to light</span>
+                </button>
+
+                <!-- Diya 2 -->
+                <button onclick="lightDiya(2)" id="diyaBtn2" class="p-3 rounded-2xl bg-black/45 border border-white/10 flex flex-col items-center justify-center space-y-1.5 hover:border-marigold/50 transition group">
+                    <svg class="w-11 h-11 overflow-visible" viewBox="0 0 64 64">
+                        <g id="flame2" class="opacity-20 transition-opacity duration-300">
+                            <path d="M32 8 C26 18, 24 26, 32 32 C40 26, 38 18, 32 8 Z" fill="#F59E0B"/>
+                            <path d="M32 14 C29 20, 28 25, 32 30 C36 25, 35 20, 32 14 Z" fill="#FEF08A"/>
+                        </g>
+                        <path d="M12 34 Q32 40 52 34 L46 50 Q32 56 18 50 Z" fill="#9A3412" stroke="#FBBF24" stroke-width="1.5"/>
+                        <ellipse cx="32" cy="34" rx="20" ry="4" fill="#7C2D12" stroke="#F59E0B" stroke-width="1"/>
+                    </svg>
+                    <span class="text-xs font-bold text-gray-200">Diya 2</span>
+                    <span id="diyaSub2" class="text-[10px] text-gray-400">Tap to light</span>
+                </button>
+
+                <!-- Diya 3 -->
+                <button onclick="lightDiya(3)" id="diyaBtn3" class="p-3 rounded-2xl bg-black/45 border border-white/10 flex flex-col items-center justify-center space-y-1.5 hover:border-marigold/50 transition group">
+                    <svg class="w-11 h-11 overflow-visible" viewBox="0 0 64 64">
+                        <g id="flame3" class="opacity-20 transition-opacity duration-300">
+                            <path d="M32 8 C26 18, 24 26, 32 32 C40 26, 38 18, 32 8 Z" fill="#F59E0B"/>
+                            <path d="M32 14 C29 20, 28 25, 32 30 C36 25, 35 20, 32 14 Z" fill="#FEF08A"/>
+                        </g>
+                        <path d="M12 34 Q32 40 52 34 L46 50 Q32 56 18 50 Z" fill="#9A3412" stroke="#FBBF24" stroke-width="1.5"/>
+                        <ellipse cx="32" cy="34" rx="20" ry="4" fill="#7C2D12" stroke="#F59E0B" stroke-width="1"/>
+                    </svg>
+                    <span class="text-xs font-bold text-gray-200">Diya 3</span>
+                    <span id="diyaSub3" class="text-[10px] text-gray-400">Tap to light</span>
+                </button>
+            </div>
+
+            <!-- Diya Message Reveal Box -->
+            <div id="diyaReveal" class="hidden p-4 rounded-2xl bg-emeraldcustom/15 border border-emeraldcustom/40 space-y-1.5 animate-fadeIn">
+                <div class="flex items-center space-x-2">
+                    <span id="diyaMemeEmoji" class="text-xl">😤</span>
+                    <h4 id="diyaTitle" class="font-serif-custom text-sm font-bold text-marigold">Note Unlocked</h4>
+                </div>
+                <p id="diyaText" class="text-gray-100 font-handwriting text-lg leading-relaxed"></p>
+            </div>
+        </section>
+
+        <!-- CHAPTER 2: WAX-SEALED KHAT (EXACT VIDEO DESIGN) -->
+        <section class="py-2 space-y-5 relative">
+            <div class="text-center space-y-1.5">
+                <div class="flex items-center justify-center space-x-2.5 text-marigold/60 text-xs tracking-[0.3em]">
+                    <span class="h-[1px] w-10 bg-gradient-to-r from-transparent to-marigold/40"></span>
+                    <span>✦ ✦ ❖ ✦ ✦</span>
+                    <span class="h-[1px] w-10 bg-gradient-to-l from-transparent to-marigold/40"></span>
+                </div>
+                <h2 class="font-serif-custom text-3xl font-bold text-[#F5EFE6] tracking-wide">
+                    Chapter 2
+                </h2>
+                <p class="font-serif-custom italic text-xs sm:text-sm text-marigold/90">
+                    Wax-Sealed Khat — Tap the Seal to Open
+                </p>
+            </div>
+
+            <!-- 4 Vertically Stacked Wax-Sealed Khat Envelopes -->
+            <div class="space-y-4">
+
+                <!-- Sealed Khat #1 -->
+                <div class="khat-envelope" id="khatCard1" onclick="toggleKhat(1)">
+                    <svg class="khat-flap-svg" viewBox="0 0 400 200" preserveAspectRatio="none">
+                        <line x1="0" y1="0" x2="200" y2="95" stroke="rgba(217, 169, 78, 0.13)" stroke-width="1" />
+                        <line x1="400" y1="0" x2="200" y2="95" stroke="rgba(217, 169, 78, 0.13)" stroke-width="1" />
+                    </svg>
+                    <div class="khat-inner-dashed">
+                        <div class="khat-paper-wrapper">
+                            <div class="khat-paper-inner">
+                                <div class="khat-ruled-paper tilt-left">
+                                    <p class="font-handwriting text-[20px] leading-[26px] text-[#2B3040]">
+                                        "Blocked list mein 1 saal rehne ke baad, ab toh court se bhi bail mil jati hai... thoda तरस khao! 😅"
+                                    </p>
+                                    <p class="font-handwriting text-sm text-[#8C857B] mt-2.5 tracking-wide">
+                                        — Exhibit A
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wax-seal-btn" aria-label="Tap wax seal 1">
+                            <div class="wax-seal-inner-ring"></div>
+                        </div>
+                        <div id="khatMeta1" class="text-center mt-3 space-y-0.5 transition-all duration-300">
+                            <h4 class="font-serif-custom text-base font-bold text-[#F3E5AB]">Sealed Khat #1</h4>
+                            <p class="text-xs text-gray-400">Tap the wax seal to open</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sealed Khat #2 -->
+                <div class="khat-envelope" id="khatCard2" onclick="toggleKhat(2)">
+                    <svg class="khat-flap-svg" viewBox="0 0 400 200" preserveAspectRatio="none">
+                        <line x1="0" y1="0" x2="200" y2="95" stroke="rgba(217, 169, 78, 0.13)" stroke-width="1" />
+                        <line x1="400" y1="0" x2="200" y2="95" stroke="rgba(217, 169, 78, 0.13)" stroke-width="1" />
+                    </svg>
+                    <div class="khat-inner-dashed">
+                        <div class="khat-paper-wrapper">
+                            <div class="khat-paper-inner">
+                                <div class="khat-ruled-paper tilt-right">
+                                    <p class="font-handwriting text-[20px] leading-[26px] text-[#2B3040]">
+                                        "Na danga-fangi, na netagiri, na sadi si emojis... ekdum shareef ban chuka hoon ab 😇"
+                                    </p>
+                                    <p class="font-handwriting text-sm text-[#8C857B] mt-2.5 tracking-wide">
+                                        — Exhibit B
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wax-seal-btn" aria-label="Tap wax seal 2">
+                            <div class="wax-seal-inner-ring"></div>
+                        </div>
+                        <div id="khatMeta2" class="text-center mt-3 space-y-0.5 transition-all duration-300">
+                            <h4 class="font-serif-custom text-base font-bold text-[#F3E5AB]">Sealed Khat #2</h4>
+                            <p class="text-xs text-gray-400">Tap the wax seal to open</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sealed Khat #3 -->
+                <div class="khat-envelope" id="khatCard3" onclick="toggleKhat(3)">
+                    <svg class="khat-flap-svg" viewBox="0 0 400 200" preserveAspectRatio="none">
+                        <line x1="0" y1="0" x2="200" y2="95" stroke="rgba(217, 169, 78, 0.13)" stroke-width="1" />
+                        <line x1="400" y1="0" x2="200" y2="95" stroke="rgba(217, 169, 78, 0.13)" stroke-width="1" />
+                    </svg>
+                    <div class="khat-inner-dashed">
+                        <div class="khat-paper-wrapper">
+                            <div class="khat-paper-inner">
+                                <div class="khat-ruled-paper tilt-left">
+                                    <p class="font-handwriting text-[20px] leading-[26px] text-[#2B3040]">
+                                        "Tumhare 'bye ab message mat karna' ko 365 din seriously follow kiya... ab toh unblock banta hai! 🥺"
+                                    </p>
+                                    <p class="font-handwriting text-sm text-[#8C857B] mt-2.5 tracking-wide">
+                                        — Exhibit C
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wax-seal-btn" aria-label="Tap wax seal 3">
+                            <div class="wax-seal-inner-ring"></div>
+                        </div>
+                        <div id="khatMeta3" class="text-center mt-3 space-y-0.5 transition-all duration-300">
+                            <h4 class="font-serif-custom text-base font-bold text-[#F3E5AB]">Sealed Khat #3</h4>
+                            <p class="text-xs text-gray-400">Tap the wax seal to open</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sealed Khat #4 -->
+                <div class="khat-envelope" id="khatCard4" onclick="toggleKhat(4)">
+                    <svg class="khat-flap-svg" viewBox="0 0 400 200" preserveAspectRatio="none">
+                        <line x1="0" y1="0" x2="200" y2="95" stroke="rgba(217, 169, 78, 0.13)" stroke-width="1" />
+                        <line x1="400" y1="0" x2="200" y2="95" stroke="rgba(217, 169, 78, 0.13)" stroke-width="1" />
+                    </svg>
+                    <div class="khat-inner-dashed">
+                        <div class="khat-paper-wrapper">
+                            <div class="khat-paper-inner">
+                                <div class="khat-ruled-paper tilt-right">
+                                    <p class="font-handwriting text-[20px] leading-[26px] text-[#2B3040]">
+                                        "Is Diwali pe thoda sa gussa side mein rakh ke ek baar muskura do bas ✨"
+                                    </p>
+                                    <p class="font-handwriting text-sm text-[#8C857B] mt-2.5 tracking-wide">
+                                        — Exhibit D
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wax-seal-btn" aria-label="Tap wax seal 4">
+                            <div class="wax-seal-inner-ring"></div>
+                        </div>
+                        <div id="khatMeta4" class="text-center mt-3 space-y-0.5 transition-all duration-300">
+                            <h4 class="font-serif-custom text-base font-bold text-[#F3E5AB]">Sealed Khat #4</h4>
+                            <p class="text-xs text-gray-400">Tap the wax seal to open</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CHAPTER 3: GOLDEN FOIL SCRATCH CARD (FIXED MOBILE HEIGHT & ZERO CLIPPING) -->
+        <section class="glass-card p-5 rounded-3xl space-y-4 shadow-2xl relative">
+            <div class="flex items-center justify-between gap-2">
+                <span class="text-[11px] font-bold tracking-wider text-amber-400 uppercase truncate">Chapter III • Scratch Card</span>
+                <span class="text-[11px] bg-amberdiya/20 px-2.5 py-0.5 rounded-full text-marigold font-semibold whitespace-nowrap shrink-0">VIP Coupon 🎟️</span>
+            </div>
+
+            <div class="space-y-1">
+                <h3 class="font-serif-custom text-xl font-bold text-white">Lassi's VIP Peace Treaty</h3>
+                <p class="text-xs text-gray-300 leading-relaxed">Rub your finger across the golden foil below to reveal your lifetime coupon:</p>
+            </div>
+
+            <!-- Auto-Fitting Scratch Container so Emojis & Text Never Clip -->
+            <div id="scratchWrapper" class="relative w-full min-h-[215px] rounded-2xl overflow-hidden border-2 border-marigold/50 shadow-2xl bg-gradient-to-b from-emerald-950 via-deepnight to-night flex items-center justify-center p-5 text-center select-none">
+                <!-- Underneath Secret Content (Relative so wrapper expands naturally on any phone screen) -->
+                <div class="relative z-0 flex flex-col items-center justify-center text-center space-y-2.5 py-1">
+                    <div class="text-2xl sm:text-3xl tracking-widest leading-none pt-1">🍜 ☕ 🍬 🚫🧴</div>
+                    <h4 class="font-serif-custom text-sm sm:text-base font-bold text-marigold">
+                        Lifetime VIP Peace Treaty Unlocked!
+                    </h4>
+                    <p class="text-gray-100 font-handwriting text-lg sm:text-xl leading-snug max-w-xs">
+                        "1 Plate Simple Maggi + Hot Coffee + Imli Wali Toffee + 100% Perfume-Free Guarantee + Lifetime Pass jisme 'Hum Sahi, Bhaishab Galat'!"
+                    </p>
+                </div>
+                <!-- Gold Foil Canvas Overlay -->
+                <canvas id="scratchCanvas" class="absolute inset-0 w-full h-full cursor-pointer z-10 touch-none"></canvas>
+            </div>
+            <p class="text-[11px] text-center text-amber-300/80 italic">💡 Swipe your finger across the gold box to scratch away the foil!</p>
+        </section>
+
+        <!-- CHAPTER 4: SKY LANTERNS (FIXED 2x2 MOBILE CARDS & STACKED WISH INPUT) -->
+        <section class="glass-card p-5 rounded-3xl space-y-4 shadow-2xl relative overflow-visible">
+            <div class="flex items-center justify-between gap-2">
+                <span class="text-[11px] font-bold tracking-wider text-amber-400 uppercase truncate">Chapter IV • Sky Lanterns</span>
+                <span class="text-[11px] bg-amberdiya/20 px-2.5 py-0.5 rounded-full text-marigold font-semibold whitespace-nowrap shrink-0">Akash Kandil 🏮</span>
+            </div>
+
+            <div class="space-y-1">
+                <h3 class="font-serif-custom text-xl font-bold text-white">Memories in the Night Sky</h3>
+                <p class="text-xs text-gray-300 leading-relaxed">Tap any of the 4 cards below to read the thoughts that stayed all year:</p>
+            </div>
+
+            <!-- Night Sky Canvas -->
+            <div class="w-full h-36 rounded-2xl overflow-hidden border border-marigold/30 bg-night relative shadow-inner">
+                <canvas id="lanternSkyCanvas" class="w-full h-full"></canvas>
+                <div class="absolute inset-x-0 bottom-2 text-center pointer-events-none">
+                    <p class="font-handwriting text-marigold/90 text-base tracking-wider">✨ Floating Akash Kandil Sky ✨</p>
+                </div>
+            </div>
+
+            <!-- Mobile-Friendly 2x2 Memory Buttons Grid -->
+            <div class="grid grid-cols-2 gap-2.5">
+                <button onclick="showLanternMemory(1)" id="memCard1" class="p-3 rounded-2xl bg-black/50 border border-marigold/40 hover:border-marigold text-left transition flex flex-col justify-between space-y-1">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-marigold">1. Meri Nakchadi</span>
+                        <span class="text-base shrink-0">😤</span>
+                    </div>
+                    <p class="text-[11px] text-gray-300 truncate">"Gusse mein laal..."</p>
+                </button>
+
+                <button onclick="showLanternMemory(2)" id="memCard2" class="p-3 rounded-2xl bg-black/50 border border-white/10 hover:border-marigold text-left transition flex flex-col justify-between space-y-1">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-marigold">2. Sweet Lassi</span>
+                        <span class="text-base shrink-0">🥛</span>
+                    </div>
+                    <p class="text-[11px] text-gray-300 truncate">"Jab smile kare..."</p>
+                </button>
+
+                <button onclick="showLanternMemory(3)" id="memCard3" class="p-3 rounded-2xl bg-black/50 border border-white/10 hover:border-marigold text-left transition flex flex-col justify-between space-y-1">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-marigold">3. Mood Fixer</span>
+                        <span class="text-base shrink-0">🍜</span>
+                    </div>
+                    <p class="text-[11px] text-gray-300 truncate">"Simple Maggi..."</p>
+                </button>
+
+                <button onclick="showLanternMemory(4)" id="memCard4" class="p-3 rounded-2xl bg-black/50 border border-white/10 hover:border-marigold text-left transition flex flex-col justify-between space-y-1">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-marigold">4. Diwali Secret</span>
+                        <span class="text-base shrink-0">🏮</span>
+                    </div>
+                    <p class="text-[11px] text-gray-300 truncate">"1 saal baad bhi..."</p>
+                </button>
+            </div>
+
+            <!-- Auto-Expanding Memory Display Box -->
+            <div id="lanternMemoryBox" class="p-4 rounded-2xl bg-amberdiya/10 border border-amberdiya/30 space-y-1.5">
+                <div class="flex items-center space-x-2">
+                    <span id="lanternBoxEmoji" class="text-xl">😤</span>
+                    <h4 id="lanternBoxTitle" class="font-serif-custom text-sm font-bold text-marigold">Meri Nakchadi</h4>
+                </div>
+                <p id="lanternBoxText" class="text-gray-100 font-handwriting text-lg leading-relaxed">
+                    "Duniya ki sabse zyada nakhre dikhane wali, par dil ki sabse saaf ladki."
+                </p>
+            </div>
+
+            <!-- Mobile-Friendly Stacked Wish Input & Button (No text truncation!) -->
+            <div class="space-y-2.5 pt-2 border-t border-white/10">
+                <label for="userWishInput" class="block text-xs text-gray-200 font-semibold">
+                    Release Your Secret Diwali Wish:
+                </label>
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="text"
+                           id="userWishInput"
+                           placeholder="Apni secret Diwali wish likho, Lassi ✨"
+                           class="w-full bg-black/60 border border-white/20 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-gray-400 focus:outline-none focus:border-marigold">
+                    <button onclick="releaseUserWish()"
+                            class="w-full sm:w-auto px-4 py-2.5 bg-gradient-to-r from-amberdiya to-marigold hover:brightness-110 text-night font-bold text-xs rounded-xl transition whitespace-nowrap shrink-0 shadow-md">
+                        Release Wish Lantern 🏮
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 5: THE UNLIT PHULJHARI & ZERO-PRESSURE ENDING -->
+        <section class="glass-card p-5 rounded-3xl space-y-4 shadow-2xl relative">
+            <div class="flex items-center justify-between gap-2">
+                <span class="text-[11px] font-bold tracking-wider text-amber-400 uppercase truncate">Chapter V • Fresh Start</span>
+                <span class="text-[11px] bg-emeraldcustom/20 px-2.5 py-0.5 rounded-full text-emerald-300 font-semibold whitespace-nowrap shrink-0">Zero Pressure ✨</span>
+            </div>
+
+            <div class="space-y-2.5 text-center">
+                <!-- Crying Kiss Meme (42155.gif) -->
+                <div class="w-24 h-24 mx-auto rounded-2xl overflow-hidden border border-marigold/35 shadow-lg bg-black/40 flex items-center justify-center p-1">
+                    <img src="42155.gif"
+                         onerror="this.onerror=null; this.src='https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif';"
+                         alt="Cute Crying Meme"
+                         class="w-full h-full object-contain">
+                </div>
+                <h3 class="font-serif-custom text-xl font-bold text-white">The Unlit Sparkler (Phuljhari)</h3>
+                <p class="text-xs text-gray-300 leading-relaxed">No force, no pressure. Choose how you want to end this 1-year silence:</p>
+            </div>
+
+            <!-- Two Honest Choices -->
+            <div class="space-y-2.5">
+                <button onclick="clickThappad()" class="w-full p-3.5 rounded-2xl bg-red-950/40 border border-red-500/30 hover:border-red-500/60 text-left transition flex items-center justify-between gap-2 group">
+                    <div class="space-y-0.5 min-w-0">
+                        <div class="text-xs font-bold text-red-300">Abhi bhi gussa hoon 👋 (Virtual Thappad)</div>
+                        <p id="thappadCounterText" class="text-[10px] text-gray-400">Thappad counter: 0 clicks</p>
+                    </div>
+                    <span class="text-2xl group-hover:scale-125 transition shrink-0">🤕</span>
+                </button>
+
+                <button onclick="lightPhuljhariAndShowRose()" class="w-full p-3.5 rounded-2xl bg-gradient-to-r from-emerald-800/60 to-emerald-700/60 border border-marigold/60 hover:border-marigold text-left transition flex items-center justify-between gap-2 group shadow-lg">
+                    <div class="space-y-0.5 min-w-0">
+                        <div class="text-xs sm:text-sm font-bold text-marigold">Chalo, thoda sa maaf kiya ✨</div>
+                        <p class="text-[10px] text-emerald-200">Sparkles + Surprise Rose Popup + Unlock Reply</p>
+                    </div>
+                    <span class="text-2xl group-hover:scale-125 transition shrink-0">🎇</span>
+                </button>
+            </div>
+
+            <!-- Thappad Reaction Feedback Box -->
+            <div id="thappadFeedback" class="hidden p-3.5 rounded-xl bg-red-950/30 border border-red-500/30 text-center animate-fadeIn">
+                <p id="thappadMsg" class="font-handwriting text-red-200 text-lg leading-snug"></p>
+            </div>
+        </section>
+
+        <!-- BREAK THE SILENCE REPLY DRAWER -->
+        <section id="replySection" class="hidden glass-card p-5 rounded-3xl space-y-4 shadow-2xl border-2 border-marigold animate-fadeIn">
+            <div class="text-center space-y-1">
+                <span class="text-3xl">💌</span>
+                <h3 class="font-serif-custom text-2xl font-bold text-marigold">Send Reply to Draupadi</h3>
+                <p class="text-xs text-gray-300">Tap a quick reaction below or write your own message:</p>
+            </div>
+
+            <!-- Mood Chips -->
+            <div class="grid grid-cols-1 gap-2">
+                <button onclick="selectReplyChip('Happy Diwali 🪔 (Still a little mad though 😤)')" class="p-3 rounded-xl bg-black/50 border border-white/10 hover:border-marigold text-xs text-gray-200 text-left transition">
+                    💬 "Happy Diwali 🪔 (Still a little mad though 😤)"
+                </button>
+                <button onclick="selectReplyChip('Apology accepted, par dobara galti mat karna 😤')" class="p-3 rounded-xl bg-black/50 border border-white/10 hover:border-marigold text-xs text-gray-200 text-left transition">
+                    💬 "Apology accepted, par dobara galti mat karna 😤"
+                </button>
+                <button onclick="selectReplyChip('Simple Maggi aur Coffee wala coupon redeem karna hai 🍜☕')" class="p-3 rounded-xl bg-black/50 border border-white/10 hover:border-marigold text-xs text-gray-200 text-left transition">
+                    💬 "Simple Maggi aur Coffee wala coupon redeem karna hai 🍜☕"
+                </button>
+            </div>
+
+            <!-- Custom Reply Textarea -->
+            <div class="space-y-2.5">
+                <textarea id="customReplyText" rows="3" placeholder="Ya jo bhi kehna hai yahan likh do..." class="w-full bg-black/60 border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-marigold"></textarea>
+                <div class="grid grid-cols-2 gap-2.5 pt-1">
+                    <button onclick="sendReplyWhatsApp()" class="py-2.5 px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md">
+                        <span>📲 WhatsApp</span>
+                    </button>
+                    <button onclick="copyReplyText()" class="py-2.5 px-3 bg-white/10 hover:bg-white/20 text-gray-200 font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5">
+                        <span>📋 Copy Reply</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER SIGNATURE WITH DRAUPADI -->
+    <footer class="w-full py-6 text-center z-20 border-t border-white/10 bg-night/90 backdrop-blur-md rounded-t-3xl space-y-1">
+        <p class="font-serif-custom text-xs text-marigold tracking-widest uppercase">Happy Diwali • Meri Lassi urf Nakchadi</p>
+        <p class="font-handwriting text-amber-200/90 text-lg">Developed with 😭 by Draupadi ✨</p>
+    </footer>
+
+    <!-- APPLICATION SCRIPTS -->
+    <script>
+        // --- CUSTOM TOAST HELPER (NO ALERTS) ---
+        let toastTimeout = null;
+        function showToast(message) {
+            const toast = document.getElementById('customToast');
+            const text = document.getElementById('customToastText');
+            text.textContent = message;
+            toast.classList.remove('hidden');
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3200);
+        }
+
+        // --- 1. AMBIENT BACKGROUND STARS ---
+        const starCanvas = document.getElementById('starsCanvas');
+        const starCtx = starCanvas.getContext('2d');
+        let width, height;
+        let stars = [];
+
+        function initStarCanvas() {
+            width = starCanvas.width = window.innerWidth;
+            height = starCanvas.height = window.innerHeight;
+            stars = [];
+            for (let i = 0; i < 70; i++) {
+                stars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: Math.random() * 1.5 + 0.4,
+                    alpha: Math.random(),
+                    speed: Math.random() * 0.015 + 0.004
+                });
+            }
+        }
+
+        function drawStars() {
+            starCtx.clearRect(0, 0, width, height);
+            starCtx.fillStyle = '#070510';
+            starCtx.fillRect(0, 0, width, height);
+
+            starCtx.fillStyle = '#FBBF24';
+            stars.forEach(star => {
+                star.alpha += star.speed;
+                if (star.alpha > 1 || star.alpha < 0.1) star.speed *= -1;
+                starCtx.globalAlpha = Math.max(0.1, Math.min(1, star.alpha));
+                starCtx.beginPath();
+                starCtx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                starCtx.fill();
+            });
+            requestAnimationFrame(drawStars);
+        }
+
+        window.addEventListener('resize', initStarCanvas);
+        initStarCanvas();
+        drawStars();
+
+        // --- 2. WEB AUDIO SYNTHESIZER CHIMES ---
+        let audioOn = false;
+        let audioCtx = null;
+
+        function toggleAudio() {
+            audioOn = !audioOn;
+            const btn = document.getElementById('audioToggle');
+            if (audioOn) {
+                btn.innerHTML = "<span>🎵 Chimes: On</span>";
+                btn.className = "px-3 py-1.5 rounded-full text-[11px] font-semibold bg-amberdiya/30 border border-amberdiya/50 text-marigold transition whitespace-nowrap shrink-0 flex items-center space-x-1";
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                playChime(587.33);
+            } else {
+                btn.innerHTML = "<span>🎵 Chimes: Off</span>";
+                btn.className = "px-3 py-1.5 rounded-full text-[11px] font-semibold bg-emeraldcustom/30 border border-emeraldcustom/50 text-emerald-300 transition whitespace-nowrap shrink-0 flex items-center space-x-1";
+            }
+        }
+
+        function playChime(freq) {
+            if (!audioOn || !audioCtx) return;
+            try {
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.1);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 1.1);
+            } catch (e) {}
+        }
+
+        // --- 3. CHAPTER 1: LIGHT THE 3 DIYAS ---
+        const litDiyasSet = new Set();
+        const diyaNotes = [
+            { emoji: "😤", title: "Diya 1 • The Real Apology", text: "Bina kisi bahane ke—I am truly sorry. Ek saal ka gussa ab thoda kam kar lo Nakchadi!" },
+            { emoji: "🐱💻", title: "Diya 2 • 365 Days", text: "Ek saal ho gaya bina baat kiye... par har festival pe tumhari yaad aana band nahi hui." },
+            { emoji: "🥛", title: "Diya 3 • Diwali Wish", text: "Chahe baat karo ya mat karo, tum hamesha khush raho aur hasti raho. Happy Diwali, Lassi!" }
+        ];
+
+        function lightDiya(num) {
+            playChime(523.25 + num * 70);
+            litDiyasSet.add(num);
+
+            const btn = document.getElementById(`diyaBtn${num}`);
+            const flame = document.getElementById(`flame${num}`);
+            btn.classList.add('bg-amberdiya/20', 'border-marigold');
+            if (flame) {
+                flame.classList.remove('opacity-20');
+                flame.classList.add('flame-active');
+            }
+            document.getElementById(`diyaSub${num}`).textContent = "Lit ✨";
+            document.getElementById(`diyaSub${num}`).classList.add('text-marigold', 'font-semibold');
+
+            document.getElementById('diyasCount').textContent = `${litDiyasSet.size}/3 Lit`;
+
+            const note = diyaNotes[num - 1];
+            const reveal = document.getElementById('diyaReveal');
+            reveal.classList.remove('hidden');
+            document.getElementById('diyaMemeEmoji').textContent = note.emoji;
+            document.getElementById('diyaTitle').textContent = note.title;
+            document.getElementById('diyaText').textContent = `"${note.text}"`;
+        }
+
+        // --- 4. CHAPTER 2: WAX-SEALED KHAT (VIDEO REPLICA INTERACTION) ---
+        function toggleKhat(id) {
+            const card = document.getElementById(`khatCard${id}`);
+            const meta = document.getElementById(`khatMeta${id}`);
+            const isOpening = !card.classList.contains('is-open');
+
+            playChime(isOpening ? 659.25 : 440);
+            card.classList.toggle('is-open');
+
+            if (isOpening) {
+                meta.classList.add('hidden');
+            } else {
+                meta.classList.remove('hidden');
+            }
+        }
+
+        // --- 5. CHAPTER 3: GOLDEN SCRATCH CARD (DYNAMIC SIZING, NO CLIPPING) ---
+        const scratchCanvas = document.getElementById('scratchCanvas');
+        const scratchWrapper = document.getElementById('scratchWrapper');
+        const scratchCtx = scratchCanvas.getContext('2d');
+        let isScratchedOnce = false;
+
+        function initScratchCard() {
+            if (!scratchCanvas || !scratchWrapper || isScratchedOnce) return;
+            scratchCanvas.width = scratchWrapper.offsetWidth;
+            scratchCanvas.height = scratchWrapper.offsetHeight;
+
+            const grad = scratchCtx.createLinearGradient(0, 0, scratchCanvas.width, scratchCanvas.height);
+            grad.addColorStop(0, '#F59E0B');
+            grad.addColorStop(0.5, '#FBBF24');
+            grad.addColorStop(1, '#D97706');
+
+            scratchCtx.globalCompositeOperation = 'source-over';
+            scratchCtx.fillStyle = grad;
+            scratchCtx.fillRect(0, 0, scratchCanvas.width, scratchCanvas.height);
+
+            // Subtle decorative border inside foil
+            scratchCtx.strokeStyle = 'rgba(120, 53, 15, 0.35)';
+            scratchCtx.lineWidth = 2;
+            scratchCtx.strokeRect(10, 10, scratchCanvas.width - 20, scratchCanvas.height - 20);
+
+            scratchCtx.fillStyle = '#451A03';
+            scratchCtx.font = 'bold 13px "Plus Jakarta Sans", sans-serif';
+            scratchCtx.textAlign = 'center';
+            scratchCtx.fillText('✨ RUB FINGER HERE TO SCRATCH FOIL ✨', scratchCanvas.width / 2, scratchCanvas.height / 2 + 5);
+        }
+
+        let scratching = false;
+        scratchCanvas.addEventListener('mousedown', (e) => { scratching = true; scratchMove(e); });
+        scratchCanvas.addEventListener('mousemove', scratchMove);
+        window.addEventListener('mouseup', () => scratching = false);
+
+        scratchCanvas.addEventListener('touchstart', (e) => { scratching = true; scratchMove(e); }, { passive: false });
+        scratchCanvas.addEventListener('touchmove', (e) => { if (scratching) e.preventDefault(); scratchMove(e); }, { passive: false });
+        scratchCanvas.addEventListener('touchend', () => scratching = false);
+
+        function scratchMove(e) {
+            if (!scratching) return;
+            const rect = scratchCanvas.getBoundingClientRect();
+            const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+            const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+            if (clientX === undefined || clientY === undefined) return;
+
+            const x = clientX - rect.left;
+            const y = clientY - rect.top;
+
+            scratchCtx.globalCompositeOperation = 'destination-out';
+            scratchCtx.beginPath();
+            scratchCtx.arc(x, y, 28, 0, Math.PI * 2);
+            scratchCtx.fill();
+
+            if (!isScratchedOnce) {
+                isScratchedOnce = true;
+                playChime(880);
+            }
+        }
+
+        window.addEventListener('load', initScratchCard);
+        window.addEventListener('resize', initScratchCard);
+
+        // --- 6. CHAPTER 4: SKY LANTERNS ---
+        const lanternSkyCanvas = document.getElementById('lanternSkyCanvas');
+        const lanternSkyCtx = lanternSkyCanvas.getContext('2d');
+        let lanterns = [];
+
+        function initLanternSky() {
+            if (!lanternSkyCanvas) return;
+            lanternSkyCanvas.width = lanternSkyCanvas.offsetWidth;
+            lanternSkyCanvas.height = lanternSkyCanvas.offsetHeight;
+            lanterns = [];
+            for (let i = 0; i < 14; i++) {
+                lanterns.push({
+                    x: Math.random() * lanternSkyCanvas.width,
+                    y: Math.random() * lanternSkyCanvas.height,
+                    radius: Math.random() * 4 + 3,
+                    speed: Math.random() * 0.45 + 0.2
+                });
+            }
+        }
+
+        function drawLanternSky() {
+            lanternSkyCtx.clearRect(0, 0, lanternSkyCanvas.width, lanternSkyCanvas.height);
+            lanternSkyCtx.fillStyle = '#070510';
+            lanternSkyCtx.fillRect(0, 0, lanternSkyCanvas.width, lanternSkyCanvas.height);
+
+            lanterns.forEach(l => {
+                l.y -= l.speed;
+                if (l.y < -12) {
+                    l.y = lanternSkyCanvas.height + 12;
+                    l.x = Math.random() * lanternSkyCanvas.width;
+                }
+                lanternSkyCtx.fillStyle = 'rgba(245, 158, 11, 0.25)';
+                lanternSkyCtx.beginPath();
+                lanternSkyCtx.arc(l.x, l.y, l.radius * 2.2, 0, Math.PI * 2);
+                lanternSkyCtx.fill();
+
+                lanternSkyCtx.fillStyle = '#FBBF24';
+                lanternSkyCtx.beginPath();
+                lanternSkyCtx.arc(l.x, l.y, l.radius, 0, Math.PI * 2);
+                lanternSkyCtx.fill();
+            });
+            requestAnimationFrame(drawLanternSky);
+        }
+
+        window.addEventListener('load', () => {
+            initLanternSky();
+            drawLanternSky();
+        });
+        window.addEventListener('resize', initLanternSky);
+
+        const lanternMemories = {
+            1: { emoji: "😤", title: "Meri Nakchadi", text: "Duniya ki sabse zyada nakhre dikhane wali, par dil ki sabse saaf ladki." },
+            2: { emoji: "🥛", title: "Sweet Lassi", text: "Gusse mein Nakchadi, par jab smile kare toh bilkul sweet Lassi!" },
+            3: { emoji: "🍜", title: "Mood Fixer", text: "Gussa theek karne ka ek hi ilaaj: Garam simple maggi aur dher saara silence!" },
+            4: { emoji: "🏮", title: "Diwali Secret", text: "Secret yeh hai ki 1 saal baad bhi tumhari jagah koi nahi le paya." }
+        };
+
+        function showLanternMemory(id) {
+            playChime(698.46);
+            const mem = lanternMemories[id];
+            document.getElementById('lanternBoxEmoji').textContent = mem.emoji;
+            document.getElementById('lanternBoxTitle').textContent = mem.title;
+            document.getElementById('lanternBoxText').textContent = `"${mem.text}"`;
+
+            for (let i = 1; i <= 4; i++) {
+                const card = document.getElementById(`memCard${i}`);
+                if (i === id) {
+                    card.classList.add('border-marigold/60', 'bg-amberdiya/10');
+                    card.classList.remove('border-white/10');
+                } else {
+                    card.classList.remove('border-marigold/60', 'bg-amberdiya/10');
+                    card.classList.add('border-white/10');
+                }
+            }
+        }
+
+        function releaseUserWish() {
+            const input = document.getElementById('userWishInput');
+            if (!input.value.trim()) {
+                showToast("Pehle choti si wish toh likho Lassi ji! ✨");
+                return;
+            }
+            playChime(880);
+            lanterns.push({
+                x: lanternSkyCanvas.width / 2 + (Math.random() * 40 - 20),
+                y: lanternSkyCanvas.height - 10,
+                radius: 7,
+                speed: 1.1
+            });
+            showToast(`Lantern released into the sky: "${input.value}" 🏮✨`);
+            input.value = '';
+        }
+
+        // --- 7. CHAPTER 5: THAPPAD & 1-SECOND SPARKLE BURST + LO.MP4 POPUP ---
+        let thappadCount = 0;
+        const thappadReplies = [
+            "Ouch! Okay, 100% deserved tha yeh 😭",
+            "Ek aur maar lo, par haath mat dukha lena apna 🤕",
+            "1 saal ka hisaab barabar! Ab toh thoda muskura do 😌",
+            "Abhi bhi unlit phuljhari leke khada hoon, jab gussa khatam ho tab niche wala button dabana 🕯️"
+        ];
+
+        function clickThappad() {
+            playChime(320);
+            thappadCount++;
+            const msgBox = document.getElementById('thappadFeedback');
+            msgBox.classList.remove('hidden');
+            const reply = thappadReplies[(thappadCount - 1) % thappadReplies.length];
+            document.getElementById('thappadMsg').textContent = `"${reply}"`;
+            document.getElementById('thappadCounterText').textContent = `Thappad counter: ${thappadCount} clicks`;
+        }
+
+        // 1-Second Full-Screen Sparkle Burst Effect
+        function triggerOneSecondSparkleBurst(callback) {
+            const canvas = document.getElementById('sparkleBurstCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            canvas.classList.remove('hidden');
+
+            const particles = [];
+            const colors = ['#FBBF24', '#F59E0B', '#FEF08A', '#34D399', '#FFFFFF'];
+
+            for (let i = 0; i < 140; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 11 + 2;
+                particles.push({
+                    x: canvas.width / 2 + (Math.random() * 120 - 60),
+                    y: canvas.height / 2 + (Math.random() * 120 - 60),
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed - 2,
+                    radius: Math.random() * 3.5 + 1.5,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    alpha: 1,
+                    gravity: 0.18
+                });
+            }
+
+            const startTime = performance.now();
+            const duration = 1000; // 1 second sparkle burst
+
+            function animateBurst(now) {
+                const elapsed = now - startTime;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += p.gravity;
+                    p.alpha = Math.max(0, 1 - elapsed / duration);
+
+                    ctx.save();
+                    ctx.globalAlpha = p.alpha;
+                    ctx.fillStyle = p.color;
+                    ctx.shadowColor = '#FBBF24';
+                    ctx.shadowBlur = 12;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                });
+
+                if (elapsed < duration) {
+                    requestAnimationFrame(animateBurst);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    canvas.classList.add('hidden');
+                    if (callback) callback();
+                }
+            }
+
+            requestAnimationFrame(animateBurst);
+        }
+
+        function lightPhuljhariAndShowRose() {
+            playChime(987.77);
+
+            const replySec = document.getElementById('replySection');
+            replySec.classList.remove('hidden');
+
+            triggerOneSecondSparkleBurst(() => {
+                const modal = document.getElementById('roseVideoModal');
+                const video = document.getElementById('rosePopupVideo');
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+
+                if (video) {
+                    video.currentTime = 0;
+                    video.play().catch(() => {});
+                }
+            });
+        }
+
+        function handleVideoFallback() {
+            const fallback = document.getElementById('roseVideoFallback');
+            if (fallback) {
+                fallback.classList.remove('hidden');
+                fallback.classList.add('flex');
+            }
+        }
+
+        function closeRoseModal() {
+            const modal = document.getElementById('roseVideoModal');
+            const video = document.getElementById('rosePopupVideo');
+            if (video) video.pause();
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+
+            const replySec = document.getElementById('replySection');
+            if (replySec) {
+                replySec.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // --- 8. 1-TAP REPLY DRAWER ---
+        function selectReplyChip(txt) {
+            document.getElementById('customReplyText').value = txt;
+            playChime(523.25);
+            showToast("Reply selected! Tap WhatsApp or Copy ✨");
+        }
+
+        function sendReplyWhatsApp() {
+            const txt = document.getElementById('customReplyText').value.trim();
+            const encoded = encodeURIComponent((txt || "Happy Diwali 🪔 (Still mad though)") + " — Sent from Lassi's Peace Treaty");
+            window.open(`https://wa.me/916386207545?text=${encoded}`, '_blank');
+        }
+
+        function copyReplyText() {
+            const txt = document.getElementById('customReplyText');
+            if (!txt.value.trim()) {
+                txt.value = "Happy Diwali 🪔 (Apology seen!)";
+            }
+            txt.select();
+            document.execCommand('copy');
+            showToast("Reply copied to clipboard! Paste & send it across 💌");
+        }
+    </script>
+</body>
+</html>
