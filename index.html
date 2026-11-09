@@ -1123,52 +1123,57 @@
             showToast("Reply copied to clipboard! Paste & send it across 💌");
         }
     </script>
-    <!-- Background Music Player (Auto-Skips First 24 Seconds) -->
-<audio id="bgRomanticSong" src="song.mp3" preload="auto"></audio>
+   <!-- Background Music Player (Auto-Play on First Interaction) -->
+<audio id="bgRomanticSong" src="song.mp3" preload="auto" loop></audio>
 
-<script>
+  <script>
   (function() {
     const song = document.getElementById('bgRomanticSong');
-    
-    // 24 sec se seedha "Kaabil-e-tareef tu..." shuru hoga (Agar beat drop se chahiye toh 19 kar sakte ho)
-    const START_TIME = 20; 
-    
+    const START_TIME = 21; 
     song.volume = 0.75;
     let hasStarted = false;
 
-    // File load hote hi time ko 24 sec par set kar dega
     song.addEventListener('loadedmetadata', () => {
       song.currentTime = START_TIME;
     });
 
-    // Gaana khatam hone par wapas 24 sec se ही repeat (loop) karega
     song.addEventListener('ended', () => {
       song.currentTime = START_TIME;
       song.play();
     });
 
-    // Pehle tap/touch par gaana 24 sec se play hoga
-    function startMusicOnFirstTap() {
+    // Screen par kahin bhi touch ya click karte hi gaana shuru
+    function triggerAutoPlayOnInteraction() {
       if (!hasStarted) {
         if (song.currentTime < START_TIME) {
           song.currentTime = START_TIME;
         }
         song.play().then(() => {
           hasStarted = true;
-          updateMusicButtonText(true);
+          updateMusicButtonUI(true);
+          // Event listeners hata do taaki baar-baar trigger na ho
+          ['click', 'touchstart', 'pointerdown', 'keydown'].forEach(evt => {
+            window.removeEventListener(evt, triggerAutoPlayOnInteraction);
+          });
         }).catch(() => {});
       }
     }
 
-    document.addEventListener('click', startMusicOnFirstTap, { once: true });
-    document.addEventListener('touchstart', startMusicOnFirstTap, { once: true });
+    // Sabhi possible user interaction events par lagaa do
+    ['click', 'touchstart', 'pointerdown', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, triggerAutoPlayOnInteraction, { passive: true });
+    });
 
-    // Upar wale Music/Chimes button ko update karne ke liye
-    function updateMusicButtonText(isPlaying) {
+    function updateMusicButtonUI(isPlaying) {
       const buttons = document.querySelectorAll('button');
       buttons.forEach(btn => {
         if (btn.innerText.includes('Chimes') || btn.innerText.includes('Music')) {
           btn.innerHTML = isPlaying ? '🎵 Music: On' : '🔇 Music: Off';
+          if (isPlaying) {
+            btn.className = "px-3 py-1.5 rounded-full text-[11px] font-semibold bg-amberdiya/30 border border-amberdiya/50 text-marigold transition whitespace-nowrap shrink-0 flex items-center space-x-1";
+          } else {
+            btn.className = "px-3 py-1.5 rounded-full text-[11px] font-semibold bg-emeraldcustom/30 border border-emeraldcustom/50 text-emerald-300 transition whitespace-nowrap shrink-0 flex items-center space-x-1";
+          }
         }
       });
     }
@@ -1181,15 +1186,15 @@
           if (song.currentTime < START_TIME) song.currentTime = START_TIME;
           song.play();
           hasStarted = true;
-          updateMusicButtonText(true);
+          updateMusicButtonUI(true);
         } else {
           song.pause();
-          updateMusicButtonText(false);
+          hasStarted = false;
+          updateMusicButtonUI(false);
         }
       }
     }, true);
 
-    // Jab wo "lo.mp4" video play karegi toh gaana pause ho jayega, aur video rukte hi wapas chalega
     document.querySelectorAll('video').forEach(video => {
       video.addEventListener('play', () => {
         if (!song.paused) song.pause();
