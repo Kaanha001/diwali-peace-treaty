@@ -1123,5 +1123,85 @@
             showToast("Reply copied to clipboard! Paste & send it across 💌");
         }
     </script>
+    <!-- Background Music Player (Auto-Skips First 24 Seconds) -->
+<audio id="bgRomanticSong" src="song.mp3" preload="auto"></audio>
+
+<script>
+  (function() {
+    const song = document.getElementById('bgRomanticSong');
+    
+    // 24 sec se seedha "Kaabil-e-tareef tu..." shuru hoga (Agar beat drop se chahiye toh 19 kar sakte ho)
+    const START_TIME = 20; 
+    
+    song.volume = 0.75;
+    let hasStarted = false;
+
+    // File load hote hi time ko 24 sec par set kar dega
+    song.addEventListener('loadedmetadata', () => {
+      song.currentTime = START_TIME;
+    });
+
+    // Gaana khatam hone par wapas 24 sec se ही repeat (loop) karega
+    song.addEventListener('ended', () => {
+      song.currentTime = START_TIME;
+      song.play();
+    });
+
+    // Pehle tap/touch par gaana 24 sec se play hoga
+    function startMusicOnFirstTap() {
+      if (!hasStarted) {
+        if (song.currentTime < START_TIME) {
+          song.currentTime = START_TIME;
+        }
+        song.play().then(() => {
+          hasStarted = true;
+          updateMusicButtonText(true);
+        }).catch(() => {});
+      }
+    }
+
+    document.addEventListener('click', startMusicOnFirstTap, { once: true });
+    document.addEventListener('touchstart', startMusicOnFirstTap, { once: true });
+
+    // Upar wale Music/Chimes button ko update karne ke liye
+    function updateMusicButtonText(isPlaying) {
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(btn => {
+        if (btn.innerText.includes('Chimes') || btn.innerText.includes('Music')) {
+          btn.innerHTML = isPlaying ? '🎵 Music: On' : '🔇 Music: Off';
+        }
+      });
+    }
+
+    document.addEventListener('click', function(e) {
+      const btn = e.target.closest('button');
+      if (btn && (btn.innerText.includes('Chimes') || btn.innerText.includes('Music'))) {
+        e.stopImmediatePropagation();
+        if (song.paused) {
+          if (song.currentTime < START_TIME) song.currentTime = START_TIME;
+          song.play();
+          hasStarted = true;
+          updateMusicButtonText(true);
+        } else {
+          song.pause();
+          updateMusicButtonText(false);
+        }
+      }
+    }, true);
+
+    // Jab wo "lo.mp4" video play karegi toh gaana pause ho jayega, aur video rukte hi wapas chalega
+    document.querySelectorAll('video').forEach(video => {
+      video.addEventListener('play', () => {
+        if (!song.paused) song.pause();
+      });
+      video.addEventListener('pause', () => {
+        if (hasStarted) song.play();
+      });
+      video.addEventListener('ended', () => {
+        if (hasStarted) song.play();
+      });
+    });
+  })();
+</script>
 </body>
 </html>
