@@ -57,7 +57,7 @@
             filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.95));
         }
 
-        /* Chapter 2: Exact Video Replica Styles for Wax-Sealed Khat */
+        /* Chapter 2: Wax-Sealed Khat Styles */
         .khat-envelope {
             position: relative;
             background: linear-gradient(180deg, rgba(20, 23, 44, 0.94) 0%, rgba(13, 15, 30, 0.98) 100%);
@@ -94,7 +94,7 @@
             z-index: 1;
         }
 
-        /* Glowing Terracotta/Orange-Amber Wax Seal from Video */
+        /* Glowing Terracotta/Orange-Amber Wax Seal */
         .wax-seal-btn {
             width: 56px;
             height: 56px;
@@ -130,7 +130,7 @@
             height: 32px;
         }
 
-        /* Ruled Cream Paper Note Card that Unfolds on Tap */
+        /* Ruled Cream Paper Note Card */
         .khat-paper-wrapper {
             display: grid;
             grid-template-rows: 0fr;
@@ -183,6 +183,29 @@
 </head>
 <body class="min-h-screen flex flex-col items-center justify-between relative selection:bg-marigold selection:text-night">
 
+    <!-- Background Romantic Song Element (Managed via JS for exact 24s start & loop) -->
+    <audio id="bgRomanticSong" src="song.mp3" preload="auto"></audio>
+
+    <!-- CINEMATIC WELCOME SPLASH OVERLAY -->
+    <div id="welcomeOverlay" onclick="openDiwaliGift()" class="fixed inset-0 z-[200] bg-[#070510]/95 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center transition-opacity duration-500 cursor-pointer">
+        <div onclick="event.stopPropagation(); openDiwaliGift();" class="glass-card border-2 border-marigold/70 rounded-3xl max-w-sm w-full p-6 space-y-5 shadow-[0_0_60px_rgba(251,191,36,0.35)] animate-modalPop">
+            <div class="w-16 h-16 rounded-full bg-amberdiya/20 mx-auto flex items-center justify-center border border-amberdiya/50 text-3xl shadow-inner animate-bounce">
+                🪔
+            </div>
+            <div class="space-y-1.5">
+                <span class="text-[11px] font-bold tracking-widest text-marigold uppercase">✨ Special Diwali Delivery</span>
+                <h2 class="font-serif-custom text-2xl font-bold text-white">Nakchadi's Peace Treaty</h2>
+                <p class="text-xs text-gray-300 leading-relaxed">
+                    Curated with high effort & zero pressure, specially for Meri Lassi ✨
+                </p>
+            </div>
+            <button id="welcomeOverlayBtn" type="button" class="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-amberdiya to-marigold text-night font-bold text-xs shadow-lg hover:brightness-110 active:scale-95 transition flex items-center justify-center space-x-2">
+                <span>Tap to Open Gift 🎁✨</span>
+            </button>
+            <p class="text-[10px] text-amber-200/70 italic">Tap anywhere on the card to enter</p>
+        </div>
+    </div>
+
     <!-- Background Ambient Stars Canvas -->
     <canvas id="starsCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
 
@@ -194,11 +217,10 @@
         <span id="customToastText">✨ Notification</span>
     </div>
 
-    <!-- LO.MP4 ROSE VIDEO POPUP MODAL (Triggers on 'Chalo, thoda sa maaf kiya ✨') -->
+    <!-- LO.MP4 ROSE VIDEO POPUP MODAL -->
     <div id="roseVideoModal" class="fixed inset-0 z-[95] hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
         <div class="glass-card border-2 border-marigold/70 rounded-3xl max-w-sm w-full p-5 space-y-4 shadow-[0_0_50px_rgba(251,191,36,0.3)] relative animate-modalPop text-center">
-            <!-- Top Right Close Button -->
-            <button onclick="closeRoseModal()" class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-gray-200 flex items-center justify-center text-sm font-bold transition z-20" aria-label="Close modal">
+            <button type="button" onclick="closeRoseModal()" class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-gray-200 flex items-center justify-center text-sm font-bold transition z-20" aria-label="Close modal">
                 ✕
             </button>
 
@@ -208,15 +230,13 @@
 
             <h3 class="font-serif-custom text-xl font-bold text-white">Shukriya, Meri Lassi! ✨</h3>
 
-            <!-- Video Container for lo.mp4 -->
             <div class="relative w-full aspect-[4/5] max-h-64 mx-auto rounded-2xl overflow-hidden border-2 border-marigold/40 bg-black shadow-xl flex items-center justify-center">
                 <video id="rosePopupVideo" src="lo.mp4" loop playsinline controls class="w-full h-full object-cover" onerror="handleVideoFallback()"></video>
-                <!-- Graceful Fallback if lo.mp4 is not in the same folder -->
                 <div id="roseVideoFallback" class="hidden absolute inset-0 bg-gradient-to-b from-deepnight to-night p-4 flex-col items-center justify-center text-center space-y-2.5">
                     <div class="text-5xl animate-bounce">👦🏻🌹</div>
                     <p class="font-handwriting text-2xl text-marigold">"Tum ho mera pyar..." 🎵</p>
                     <p class="text-[11px] text-gray-300 leading-relaxed">
-                        (Keep <code class="text-marigold bg-white/10 px-1.5 py-0.5 rounded">lo.mp4</code> in the same folder as <code class="text-marigold bg-white/10 px-1.5 py-0.5 rounded">index.html</code> to play the cute kid offering a red rose video!)
+                        (Keep <code class="text-marigold bg-white/10 px-1.5 py-0.5 rounded">lo.mp4</code> in the same folder as <code class="text-marigold bg-white/10 px-1.5 py-0.5 rounded">index.html</code>)
                     </p>
                 </div>
             </div>
@@ -225,7 +245,7 @@
                 "Yeh lo Lassi ji, gussa khatam karne ke liye chota sa phool 🌹✨"
             </p>
 
-            <button onclick="closeRoseModal()" class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-amberdiya to-marigold text-night font-bold text-xs shadow-lg hover:brightness-110 transition flex items-center justify-center space-x-2">
+            <button type="button" onclick="closeRoseModal()" class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-amberdiya to-marigold text-night font-bold text-xs shadow-lg hover:brightness-110 transition flex items-center justify-center space-x-2">
                 <span>Accept Rose & Write Reply 💌</span>
             </button>
         </div>
@@ -242,15 +262,15 @@
                 <p class="text-[10px] text-gray-400 truncate">For Meri Lassi 🥛 • Zero Pressure</p>
             </div>
         </div>
-        <button id="audioToggle" onclick="toggleAudio()" class="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-emeraldcustom/30 border border-emeraldcustom/50 text-emerald-300 hover:bg-emeraldcustom/40 transition whitespace-nowrap shrink-0 flex items-center space-x-1">
-            <span>🎵 Chimes: Off</span>
+        <button id="audioToggle" type="button" onclick="toggleAudio()" class="px-3 py-1.5 rounded-full text-[11px] font-semibold bg-emeraldcustom/30 border border-emeraldcustom/50 text-emerald-300 hover:bg-emeraldcustom/40 transition whitespace-nowrap shrink-0 flex items-center space-x-1">
+            <span>🔇 Music: Off</span>
         </button>
     </header>
 
     <!-- Main Mobile-First Container -->
     <main class="w-full max-w-md mx-auto px-3.5 py-5 z-10 flex flex-col space-y-9 pb-28">
 
-        <!-- HERO SECTION (with original cute cat GIF) -->
+        <!-- HERO SECTION -->
         <section class="text-center space-y-3.5 pt-1">
             <div class="inline-block px-3 py-1 rounded-full bg-amberdiya/10 border border-amberdiya/30 text-marigold text-[11px] font-semibold tracking-wider uppercase">
                 ✨ Special Diwali Edition for Deekshu
@@ -262,7 +282,6 @@
                 Almost ek saal ho gaya bina baat kiye... Maana tumne block kiya hai, par coding ka sahara lekar yeh tum tak pahuncha hi diya!
             </p>
 
-            <!-- Restored Original Cute Cat GIF Card -->
             <div class="my-3 p-4 rounded-2xl glass-card border border-marigold/25 flex flex-col items-center space-y-2.5 max-w-xs mx-auto shadow-xl">
                 <div class="w-24 h-24 rounded-xl overflow-hidden border border-amber-400/30 shadow-lg bg-black/50 flex items-center justify-center">
                     <img src="42154.gif"
@@ -276,7 +295,7 @@
             </div>
         </section>
 
-        <!-- CHAPTER 1: LIGHT THE 3 DIYAS (Clean, NO GIF inside) -->
+        <!-- CHAPTER 1: LIGHT THE 3 DIYAS -->
         <section class="glass-card p-5 rounded-3xl space-y-4 shadow-2xl relative overflow-hidden">
             <div class="flex items-center justify-between gap-2">
                 <span class="text-[11px] font-bold tracking-wider text-amber-400 uppercase truncate">Chapter I • Light Diyas</span>
@@ -288,10 +307,8 @@
                 <p class="text-xs text-gray-300 leading-relaxed">Tap each terracotta diya below to clear the darkness and read 3 short notes:</p>
             </div>
 
-            <!-- 3 Interactive Terracotta Diyas Grid -->
             <div class="grid grid-cols-3 gap-2.5 pt-1">
-                <!-- Diya 1 -->
-                <button onclick="lightDiya(1)" id="diyaBtn1" class="p-3 rounded-2xl bg-black/45 border border-white/10 flex flex-col items-center justify-center space-y-1.5 hover:border-marigold/50 transition group">
+                <button type="button" onclick="lightDiya(1)" id="diyaBtn1" class="p-3 rounded-2xl bg-black/45 border border-white/10 flex flex-col items-center justify-center space-y-1.5 hover:border-marigold/50 transition group">
                     <svg class="w-11 h-11 overflow-visible" viewBox="0 0 64 64">
                         <g id="flame1" class="opacity-20 transition-opacity duration-300">
                             <path d="M32 8 C26 18, 24 26, 32 32 C40 26, 38 18, 32 8 Z" fill="#F59E0B"/>
@@ -304,8 +321,7 @@
                     <span id="diyaSub1" class="text-[10px] text-gray-400">Tap to light</span>
                 </button>
 
-                <!-- Diya 2 -->
-                <button onclick="lightDiya(2)" id="diyaBtn2" class="p-3 rounded-2xl bg-black/45 border border-white/10 flex flex-col items-center justify-center space-y-1.5 hover:border-marigold/50 transition group">
+                <button type="button" onclick="lightDiya(2)" id="diyaBtn2" class="p-3 rounded-2xl bg-black/45 border border-white/10 flex flex-col items-center justify-center space-y-1.5 hover:border-marigold/50 transition group">
                     <svg class="w-11 h-11 overflow-visible" viewBox="0 0 64 64">
                         <g id="flame2" class="opacity-20 transition-opacity duration-300">
                             <path d="M32 8 C26 18, 24 26, 32 32 C40 26, 38 18, 32 8 Z" fill="#F59E0B"/>
@@ -318,8 +334,7 @@
                     <span id="diyaSub2" class="text-[10px] text-gray-400">Tap to light</span>
                 </button>
 
-                <!-- Diya 3 -->
-                <button onclick="lightDiya(3)" id="diyaBtn3" class="p-3 rounded-2xl bg-black/45 border border-white/10 flex flex-col items-center justify-center space-y-1.5 hover:border-marigold/50 transition group">
+                <button type="button" onclick="lightDiya(3)" id="diyaBtn3" class="p-3 rounded-2xl bg-black/45 border border-white/10 flex flex-col items-center justify-center space-y-1.5 hover:border-marigold/50 transition group">
                     <svg class="w-11 h-11 overflow-visible" viewBox="0 0 64 64">
                         <g id="flame3" class="opacity-20 transition-opacity duration-300">
                             <path d="M32 8 C26 18, 24 26, 32 32 C40 26, 38 18, 32 8 Z" fill="#F59E0B"/>
@@ -333,7 +348,6 @@
                 </button>
             </div>
 
-            <!-- Diya Message Reveal Box -->
             <div id="diyaReveal" class="hidden p-4 rounded-2xl bg-emeraldcustom/15 border border-emeraldcustom/40 space-y-1.5 animate-fadeIn">
                 <div class="flex items-center space-x-2">
                     <span id="diyaMemeEmoji" class="text-xl">😤</span>
@@ -343,7 +357,7 @@
             </div>
         </section>
 
-        <!-- CHAPTER 2: WAX-SEALED KHAT (EXACT VIDEO DESIGN) -->
+        <!-- CHAPTER 2: WAX-SEALED KHAT -->
         <section class="py-2 space-y-5 relative">
             <div class="text-center space-y-1.5">
                 <div class="flex items-center justify-center space-x-2.5 text-marigold/60 text-xs tracking-[0.3em]">
@@ -359,9 +373,7 @@
                 </p>
             </div>
 
-            <!-- 4 Vertically Stacked Wax-Sealed Khat Envelopes -->
             <div class="space-y-4">
-
                 <!-- Sealed Khat #1 -->
                 <div class="khat-envelope" id="khatCard1" onclick="toggleKhat(1)">
                     <svg class="khat-flap-svg" viewBox="0 0 400 200" preserveAspectRatio="none">
@@ -477,11 +489,10 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- CHAPTER 3: GOLDEN FOIL SCRATCH CARD (FIXED MOBILE HEIGHT & ZERO CLIPPING) -->
+        <!-- CHAPTER 3: GOLDEN FOIL SCRATCH CARD -->
         <section class="glass-card p-5 rounded-3xl space-y-4 shadow-2xl relative">
             <div class="flex items-center justify-between gap-2">
                 <span class="text-[11px] font-bold tracking-wider text-amber-400 uppercase truncate">Chapter III • Scratch Card</span>
@@ -493,9 +504,7 @@
                 <p class="text-xs text-gray-300 leading-relaxed">Rub your finger across the golden foil below to reveal your lifetime coupon:</p>
             </div>
 
-            <!-- Auto-Fitting Scratch Container so Emojis & Text Never Clip -->
             <div id="scratchWrapper" class="relative w-full min-h-[215px] rounded-2xl overflow-hidden border-2 border-marigold/50 shadow-2xl bg-gradient-to-b from-emerald-950 via-deepnight to-night flex items-center justify-center p-5 text-center select-none">
-                <!-- Underneath Secret Content (Relative so wrapper expands naturally on any phone screen) -->
                 <div class="relative z-0 flex flex-col items-center justify-center text-center space-y-2.5 py-1">
                     <div class="text-2xl sm:text-3xl tracking-widest leading-none pt-1">🍜 ☕ 🍬 🚫🧴</div>
                     <h4 class="font-serif-custom text-sm sm:text-base font-bold text-marigold">
@@ -505,13 +514,12 @@
                         "1 Plate Simple Maggi + Hot Coffee + Imli Wali Toffee + 100% Perfume-Free Guarantee + Lifetime Pass jisme 'Hum Sahi, Bhaishab Galat'!"
                     </p>
                 </div>
-                <!-- Gold Foil Canvas Overlay -->
                 <canvas id="scratchCanvas" class="absolute inset-0 w-full h-full cursor-pointer z-10 touch-none"></canvas>
             </div>
             <p class="text-[11px] text-center text-amber-300/80 italic">💡 Swipe your finger across the gold box to scratch away the foil!</p>
         </section>
 
-        <!-- CHAPTER 4: SKY LANTERNS (FIXED 2x2 MOBILE CARDS & STACKED WISH INPUT) -->
+        <!-- CHAPTER 4: SKY LANTERNS -->
         <section class="glass-card p-5 rounded-3xl space-y-4 shadow-2xl relative overflow-visible">
             <div class="flex items-center justify-between gap-2">
                 <span class="text-[11px] font-bold tracking-wider text-amber-400 uppercase truncate">Chapter IV • Sky Lanterns</span>
@@ -523,7 +531,6 @@
                 <p class="text-xs text-gray-300 leading-relaxed">Tap any of the 4 cards below to read the thoughts that stayed all year:</p>
             </div>
 
-            <!-- Night Sky Canvas -->
             <div class="w-full h-36 rounded-2xl overflow-hidden border border-marigold/30 bg-night relative shadow-inner">
                 <canvas id="lanternSkyCanvas" class="w-full h-full"></canvas>
                 <div class="absolute inset-x-0 bottom-2 text-center pointer-events-none">
@@ -531,9 +538,8 @@
                 </div>
             </div>
 
-            <!-- Mobile-Friendly 2x2 Memory Buttons Grid -->
             <div class="grid grid-cols-2 gap-2.5">
-                <button onclick="showLanternMemory(1)" id="memCard1" class="p-3 rounded-2xl bg-black/50 border border-marigold/40 hover:border-marigold text-left transition flex flex-col justify-between space-y-1">
+                <button type="button" onclick="showLanternMemory(1)" id="memCard1" class="p-3 rounded-2xl bg-black/50 border border-marigold/40 hover:border-marigold text-left transition flex flex-col justify-between space-y-1">
                     <div class="flex items-center justify-between">
                         <span class="text-xs font-bold text-marigold">1. Meri Nakchadi</span>
                         <span class="text-base shrink-0">😤</span>
@@ -541,7 +547,7 @@
                     <p class="text-[11px] text-gray-300 truncate">"Gusse mein laal..."</p>
                 </button>
 
-                <button onclick="showLanternMemory(2)" id="memCard2" class="p-3 rounded-2xl bg-black/50 border border-white/10 hover:border-marigold text-left transition flex flex-col justify-between space-y-1">
+                <button type="button" onclick="showLanternMemory(2)" id="memCard2" class="p-3 rounded-2xl bg-black/50 border border-white/10 hover:border-marigold text-left transition flex flex-col justify-between space-y-1">
                     <div class="flex items-center justify-between">
                         <span class="text-xs font-bold text-marigold">2. Sweet Lassi</span>
                         <span class="text-base shrink-0">🥛</span>
@@ -549,7 +555,7 @@
                     <p class="text-[11px] text-gray-300 truncate">"Jab smile kare..."</p>
                 </button>
 
-                <button onclick="showLanternMemory(3)" id="memCard3" class="p-3 rounded-2xl bg-black/50 border border-white/10 hover:border-marigold text-left transition flex flex-col justify-between space-y-1">
+                <button type="button" onclick="showLanternMemory(3)" id="memCard3" class="p-3 rounded-2xl bg-black/50 border border-white/10 hover:border-marigold text-left transition flex flex-col justify-between space-y-1">
                     <div class="flex items-center justify-between">
                         <span class="text-xs font-bold text-marigold">3. Mood Fixer</span>
                         <span class="text-base shrink-0">🍜</span>
@@ -557,7 +563,7 @@
                     <p class="text-[11px] text-gray-300 truncate">"Simple Maggi..."</p>
                 </button>
 
-                <button onclick="showLanternMemory(4)" id="memCard4" class="p-3 rounded-2xl bg-black/50 border border-white/10 hover:border-marigold text-left transition flex flex-col justify-between space-y-1">
+                <button type="button" onclick="showLanternMemory(4)" id="memCard4" class="p-3 rounded-2xl bg-black/50 border border-white/10 hover:border-marigold text-left transition flex flex-col justify-between space-y-1">
                     <div class="flex items-center justify-between">
                         <span class="text-xs font-bold text-marigold">4. Diwali Secret</span>
                         <span class="text-base shrink-0">🏮</span>
@@ -566,7 +572,6 @@
                 </button>
             </div>
 
-            <!-- Auto-Expanding Memory Display Box -->
             <div id="lanternMemoryBox" class="p-4 rounded-2xl bg-amberdiya/10 border border-amberdiya/30 space-y-1.5">
                 <div class="flex items-center space-x-2">
                     <span id="lanternBoxEmoji" class="text-xl">😤</span>
@@ -577,7 +582,6 @@
                 </p>
             </div>
 
-            <!-- Mobile-Friendly Stacked Wish Input & Button (No text truncation!) -->
             <div class="space-y-2.5 pt-2 border-t border-white/10">
                 <label for="userWishInput" class="block text-xs text-gray-200 font-semibold">
                     Release Your Secret Diwali Wish:
@@ -587,7 +591,7 @@
                            id="userWishInput"
                            placeholder="Apni secret Diwali wish likho, Lassi ✨"
                            class="w-full bg-black/60 border border-white/20 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-gray-400 focus:outline-none focus:border-marigold">
-                    <button onclick="releaseUserWish()"
+                    <button type="button" onclick="releaseUserWish()"
                             class="w-full sm:w-auto px-4 py-2.5 bg-gradient-to-r from-amberdiya to-marigold hover:brightness-110 text-night font-bold text-xs rounded-xl transition whitespace-nowrap shrink-0 shadow-md">
                         Release Wish Lantern 🏮
                     </button>
@@ -603,7 +607,6 @@
             </div>
 
             <div class="space-y-2.5 text-center">
-                <!-- Crying Kiss Meme (42155.gif) -->
                 <div class="w-24 h-24 mx-auto rounded-2xl overflow-hidden border border-marigold/35 shadow-lg bg-black/40 flex items-center justify-center p-1">
                     <img src="42155.gif"
                          onerror="this.onerror=null; this.src='https://media.giphy.com/media/OPU6wzx8JrHna/giphy.gif';"
@@ -614,9 +617,8 @@
                 <p class="text-xs text-gray-300 leading-relaxed">No force, no pressure. Choose how you want to end this 1-year silence:</p>
             </div>
 
-            <!-- Two Honest Choices -->
             <div class="space-y-2.5">
-                <button onclick="clickThappad()" class="w-full p-3.5 rounded-2xl bg-red-950/40 border border-red-500/30 hover:border-red-500/60 text-left transition flex items-center justify-between gap-2 group">
+                <button type="button" onclick="clickThappad()" class="w-full p-3.5 rounded-2xl bg-red-950/40 border border-red-500/30 hover:border-red-500/60 text-left transition flex items-center justify-between gap-2 group">
                     <div class="space-y-0.5 min-w-0">
                         <div class="text-xs font-bold text-red-300">Abhi bhi gussa hoon 👋 (Virtual Thappad)</div>
                         <p id="thappadCounterText" class="text-[10px] text-gray-400">Thappad counter: 0 clicks</p>
@@ -624,7 +626,7 @@
                     <span class="text-2xl group-hover:scale-125 transition shrink-0">🤕</span>
                 </button>
 
-                <button onclick="lightPhuljhariAndShowRose()" class="w-full p-3.5 rounded-2xl bg-gradient-to-r from-emerald-800/60 to-emerald-700/60 border border-marigold/60 hover:border-marigold text-left transition flex items-center justify-between gap-2 group shadow-lg">
+                <button type="button" onclick="lightPhuljhariAndShowRose()" class="w-full p-3.5 rounded-2xl bg-gradient-to-r from-emerald-800/60 to-emerald-700/60 border border-marigold/60 hover:border-marigold text-left transition flex items-center justify-between gap-2 group shadow-lg">
                     <div class="space-y-0.5 min-w-0">
                         <div class="text-xs sm:text-sm font-bold text-marigold">Chalo, thoda sa maaf kiya ✨</div>
                         <p class="text-[10px] text-emerald-200">Sparkles + Surprise Rose Popup + Unlock Reply</p>
@@ -633,7 +635,6 @@
                 </button>
             </div>
 
-            <!-- Thappad Reaction Feedback Box -->
             <div id="thappadFeedback" class="hidden p-3.5 rounded-xl bg-red-950/30 border border-red-500/30 text-center animate-fadeIn">
                 <p id="thappadMsg" class="font-handwriting text-red-200 text-lg leading-snug"></p>
             </div>
@@ -647,27 +648,25 @@
                 <p class="text-xs text-gray-300">Tap a quick reaction below or write your own message:</p>
             </div>
 
-            <!-- Mood Chips -->
             <div class="grid grid-cols-1 gap-2">
-                <button onclick="selectReplyChip('Happy Diwali 🪔 (Still a little mad though 😤)')" class="p-3 rounded-xl bg-black/50 border border-white/10 hover:border-marigold text-xs text-gray-200 text-left transition">
+                <button type="button" onclick="selectReplyChip('Happy Diwali 🪔 (Still a little mad though 😤)')" class="p-3 rounded-xl bg-black/50 border border-white/10 hover:border-marigold text-xs text-gray-200 text-left transition">
                     💬 "Happy Diwali 🪔 (Still a little mad though 😤)"
                 </button>
-                <button onclick="selectReplyChip('Apology accepted, par dobara galti mat karna 😤')" class="p-3 rounded-xl bg-black/50 border border-white/10 hover:border-marigold text-xs text-gray-200 text-left transition">
+                <button type="button" onclick="selectReplyChip('Apology accepted, par dobara galti mat karna 😤')" class="p-3 rounded-xl bg-black/50 border border-white/10 hover:border-marigold text-xs text-gray-200 text-left transition">
                     💬 "Apology accepted, par dobara galti mat karna 😤"
                 </button>
-                <button onclick="selectReplyChip('Simple Maggi aur Coffee wala coupon redeem karna hai 🍜☕')" class="p-3 rounded-xl bg-black/50 border border-white/10 hover:border-marigold text-xs text-gray-200 text-left transition">
+                <button type="button" onclick="selectReplyChip('Simple Maggi aur Coffee wala coupon redeem karna hai 🍜☕')" class="p-3 rounded-xl bg-black/50 border border-white/10 hover:border-marigold text-xs text-gray-200 text-left transition">
                     💬 "Simple Maggi aur Coffee wala coupon redeem karna hai 🍜☕"
                 </button>
             </div>
 
-            <!-- Custom Reply Textarea -->
             <div class="space-y-2.5">
                 <textarea id="customReplyText" rows="3" placeholder="Ya jo bhi kehna hai yahan likh do..." class="w-full bg-black/60 border border-white/20 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-marigold"></textarea>
                 <div class="grid grid-cols-2 gap-2.5 pt-1">
-                    <button onclick="sendReplyWhatsApp()" class="py-2.5 px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md">
+                    <button type="button" onclick="sendReplyWhatsApp()" class="py-2.5 px-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5 shadow-md">
                         <span>📲 WhatsApp</span>
                     </button>
-                    <button onclick="copyReplyText()" class="py-2.5 px-3 bg-white/10 hover:bg-white/20 text-gray-200 font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5">
+                    <button type="button" onclick="copyReplyText()" class="py-2.5 px-3 bg-white/10 hover:bg-white/20 text-gray-200 font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5">
                         <span>📋 Copy Reply</span>
                     </button>
                 </div>
@@ -676,15 +675,119 @@
 
     </main>
 
-    <!-- FOOTER SIGNATURE WITH DRAUPADI -->
+    <!-- FOOTER SIGNATURE -->
     <footer class="w-full py-6 text-center z-20 border-t border-white/10 bg-night/90 backdrop-blur-md rounded-t-3xl space-y-1">
         <p class="font-serif-custom text-xs text-marigold tracking-widest uppercase">Happy Diwali • Meri Lassi urf Nakchadi</p>
         <p class="font-handwriting text-amber-200/90 text-lg">Developed with 😭 by Draupadi ✨</p>
     </footer>
 
-    <!-- APPLICATION SCRIPTS -->
+    <!-- UNIFIED & TESTED APPLICATION SCRIPT -->
     <script>
-        // --- CUSTOM TOAST HELPER (NO ALERTS) ---
+        // --- 0. UNIFIED MUSIC & CHIMES CONTROLLER ---
+        const song = document.getElementById('bgRomanticSong');
+        const START_TIME = 21; // Starts directly at "Kaabil-e-tareef tu..."
+        let audioOn = false;
+        let audioCtx = null;
+        let wasPlayingBeforeVideo = false;
+
+        if (song) {
+            song.volume = 0.75;
+
+            // Set to 24s as soon as metadata loads
+            song.addEventListener('loadedmetadata', () => {
+                if (song.currentTime < START_TIME) {
+                    song.currentTime = START_TIME;
+                }
+            });
+
+            // Guarantee that the first 24 seconds of tuning never play
+            song.addEventListener('timeupdate', () => {
+                if (song.currentTime < START_TIME) {
+                    song.currentTime = START_TIME;
+                }
+            });
+
+            // Loop back to 24s when song ends
+            song.addEventListener('ended', () => {
+                song.currentTime = START_TIME;
+                if (audioOn) {
+                    song.play().catch(() => {});
+                }
+            });
+        }
+
+        function setAudioToggleUI(isPlaying) {
+            const btn = document.getElementById('audioToggle');
+            if (!btn) return;
+            if (isPlaying) {
+                btn.innerHTML = "<span>🎵 Music: On</span>";
+                btn.className = "px-3 py-1.5 rounded-full text-[11px] font-semibold bg-amberdiya/30 border border-amberdiya/50 text-marigold transition whitespace-nowrap shrink-0 flex items-center space-x-1";
+            } else {
+                btn.innerHTML = "<span>🔇 Music: Off</span>";
+                btn.className = "px-3 py-1.5 rounded-full text-[11px] font-semibold bg-emeraldcustom/30 border border-emeraldcustom/50 text-emerald-300 transition whitespace-nowrap shrink-0 flex items-center space-x-1";
+            }
+        }
+
+        function startRomanticSong() {
+            if (!song) return;
+            try {
+                if (song.readyState >= 1 && song.currentTime < START_TIME) {
+                    song.currentTime = START_TIME;
+                }
+            } catch (e) {}
+
+            song.play().then(() => {
+                if (song.currentTime < START_TIME) {
+                    try { song.currentTime = START_TIME; } catch (e) {}
+                }
+                audioOn = true;
+                setAudioToggleUI(true);
+            }).catch(() => {
+                setAudioToggleUI(false);
+            });
+        }
+
+        function openDiwaliGift() {
+            const overlay = document.getElementById('welcomeOverlay');
+            if (overlay) {
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 500);
+            }
+            startRomanticSong();
+        }
+
+        function toggleAudio() {
+            if (!song) return;
+            if (song.paused) {
+                startRomanticSong();
+            } else {
+                song.pause();
+                audioOn = false;
+                setAudioToggleUI(false);
+            }
+        }
+
+        function playChime(freq) {
+            if (!audioOn) return;
+            try {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.9);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.9);
+            } catch (e) {}
+        }
+
+        // --- CUSTOM TOAST HELPER ---
         let toastTimeout = null;
         function showToast(message) {
             const toast = document.getElementById('customToast');
@@ -739,42 +842,7 @@
         initStarCanvas();
         drawStars();
 
-        // --- 2. WEB AUDIO SYNTHESIZER CHIMES ---
-        let audioOn = false;
-        let audioCtx = null;
-
-        function toggleAudio() {
-            audioOn = !audioOn;
-            const btn = document.getElementById('audioToggle');
-            if (audioOn) {
-                btn.innerHTML = "<span>🎵 Chimes: On</span>";
-                btn.className = "px-3 py-1.5 rounded-full text-[11px] font-semibold bg-amberdiya/30 border border-amberdiya/50 text-marigold transition whitespace-nowrap shrink-0 flex items-center space-x-1";
-                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                playChime(587.33);
-            } else {
-                btn.innerHTML = "<span>🎵 Chimes: Off</span>";
-                btn.className = "px-3 py-1.5 rounded-full text-[11px] font-semibold bg-emeraldcustom/30 border border-emeraldcustom/50 text-emerald-300 transition whitespace-nowrap shrink-0 flex items-center space-x-1";
-            }
-        }
-
-        function playChime(freq) {
-            if (!audioOn || !audioCtx) return;
-            try {
-                if (audioCtx.state === 'suspended') audioCtx.resume();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.1);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 1.1);
-            } catch (e) {}
-        }
-
-        // --- 3. CHAPTER 1: LIGHT THE 3 DIYAS ---
+        // --- 2. CHAPTER 1: LIGHT THE 3 DIYAS ---
         const litDiyasSet = new Set();
         const diyaNotes = [
             { emoji: "😤", title: "Diya 1 • The Real Apology", text: "Bina kisi bahane ke—I am truly sorry. Ek saal ka gussa ab thoda kam kar lo Nakchadi!" },
@@ -806,7 +874,7 @@
             document.getElementById('diyaText').textContent = `"${note.text}"`;
         }
 
-        // --- 4. CHAPTER 2: WAX-SEALED KHAT (VIDEO REPLICA INTERACTION) ---
+        // --- 3. CHAPTER 2: WAX-SEALED KHAT ---
         function toggleKhat(id) {
             const card = document.getElementById(`khatCard${id}`);
             const meta = document.getElementById(`khatMeta${id}`);
@@ -822,7 +890,7 @@
             }
         }
 
-        // --- 5. CHAPTER 3: GOLDEN SCRATCH CARD (DYNAMIC SIZING, NO CLIPPING) ---
+        // --- 4. CHAPTER 3: GOLDEN SCRATCH CARD ---
         const scratchCanvas = document.getElementById('scratchCanvas');
         const scratchWrapper = document.getElementById('scratchWrapper');
         const scratchCtx = scratchCanvas.getContext('2d');
@@ -842,7 +910,6 @@
             scratchCtx.fillStyle = grad;
             scratchCtx.fillRect(0, 0, scratchCanvas.width, scratchCanvas.height);
 
-            // Subtle decorative border inside foil
             scratchCtx.strokeStyle = 'rgba(120, 53, 15, 0.35)';
             scratchCtx.lineWidth = 2;
             scratchCtx.strokeRect(10, 10, scratchCanvas.width - 20, scratchCanvas.height - 20);
@@ -886,7 +953,7 @@
         window.addEventListener('load', initScratchCard);
         window.addEventListener('resize', initScratchCard);
 
-        // --- 6. CHAPTER 4: SKY LANTERNS ---
+        // --- 5. CHAPTER 4: SKY LANTERNS ---
         const lanternSkyCanvas = document.getElementById('lanternSkyCanvas');
         const lanternSkyCtx = lanternSkyCanvas.getContext('2d');
         let lanterns = [];
@@ -962,24 +1029,95 @@
             }
         }
 
-        function releaseUserWish() {
+       function releaseUserWish() {
             const input = document.getElementById('userWishInput');
-            if (!input.value.trim()) {
+            const wishText = input.value.trim();
+            if (!wishText) {
                 showToast("Pehle choti si wish toh likho Lassi ji! ✨");
                 return;
             }
             playChime(880);
+
+            // 1. Upar chote sky box mein bhi lantern add hoga
             lanterns.push({
                 x: lanternSkyCanvas.width / 2 + (Math.random() * 40 - 20),
                 y: lanternSkyCanvas.height - 10,
                 radius: 7,
                 speed: 1.1
             });
-            showToast(`Lantern released into the sky: "${input.value}" 🏮✨`);
+
+            // 2. Full-Screen Cute Floating Lantern Animation 🏮
+            const screenH = window.innerHeight + 180;
+            const wrapper = document.createElement('div');
+            wrapper.style.cssText = 'position:fixed;left:0;right:0;bottom:60px;display:flex;justify-content:center;pointer-events:none;z-index:160;';
+
+            // Main Lantern + Wish Tag
+            const mainLantern = document.createElement('div');
+            mainLantern.style.cssText = 'display:flex;flex-direction:column;align-items:center;position:relative;';
+
+            const emojiEl = document.createElement('div');
+            emojiEl.textContent = '🏮';
+            emojiEl.style.cssText = 'font-size:54px;line-height:1;filter:drop-shadow(0 0 22px rgba(245,158,11,0.95));';
+
+            const flameGlow = document.createElement('div');
+            flameGlow.style.cssText = 'width:14px;height:14px;border-radius:999px;background:#FEF08A;margin-top:-10px;box-shadow:0 0 18px 6px rgba(251,191,36,0.9);';
+
+            const threadEl = document.createElement('div');
+            threadEl.style.cssText = 'width:1.5px;height:10px;background:rgba(251,191,36,0.75);';
+
+            const wishTag = document.createElement('div');
+            wishTag.textContent = `✨ "${wishText}"`;
+            wishTag.style.cssText = 'background:rgba(16,14,34,0.92);border:1px solid #FBBF24;color:#FEF08A;padding:4px 14px;border-radius:999px;font-family:"Caveat",cursive;font-size:19px;white-space:nowrap;max-width:250px;overflow:hidden;text-overflow:ellipsis;box-shadow:0 4px 18px rgba(245,158,11,0.35);';
+
+            mainLantern.appendChild(emojiEl);
+            mainLantern.appendChild(flameGlow);
+            mainLantern.appendChild(threadEl);
+            mainLantern.appendChild(wishTag);
+            wrapper.appendChild(mainLantern);
+
+            // 2 Cute Mini Companion Lanterns on Left & Right
+            [-85, 85].forEach((offsetX, idx) => {
+                const mini = document.createElement('div');
+                mini.textContent = '🏮';
+                mini.style.cssText = `position:absolute;bottom:20px;font-size:28px;filter:drop-shadow(0 0 14px rgba(245,158,11,0.85));`;
+                wrapper.appendChild(mini);
+
+                mini.animate([
+                    { transform: `translate(${offsetX * 0.4}px, 20px) scale(0.4) rotate(0deg)`, opacity: 0 },
+                    { transform: `translate(${offsetX}px, -${screenH * 0.2}px) scale(0.95) rotate(${idx ? 8 : -8}deg)`, opacity: 0.95, offset: 0.2 },
+                    { transform: `translate(${offsetX * 1.25}px, -${screenH * 0.6}px) scale(0.85) rotate(${idx ? -6 : 6}deg)`, opacity: 0.85, offset: 0.6 },
+                    { transform: `translate(${offsetX * 0.9}px, -${screenH}px) scale(0.6) rotate(0deg)`, opacity: 0 }
+                ], {
+                    duration: 5200 + idx * 400,
+                    easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                    fill: 'forwards'
+                });
+            });
+
+            document.body.appendChild(wrapper);
+
+            // Animate Main Lantern Swaying Upwards Across the Screen
+            mainLantern.animate([
+                { transform: 'translate(0px, 30px) scale(0.4) rotate(-5deg)', opacity: 0 },
+                { transform: `translate(-22px, -${screenH * 0.18}px) scale(1.06) rotate(5deg)`, opacity: 1, offset: 0.18 },
+                { transform: `translate(24px, -${screenH * 0.48}px) scale(1) rotate(-5deg)`, opacity: 1, offset: 0.48 },
+                { transform: `translate(-18px, -${screenH * 0.78}px) scale(0.92) rotate(4deg)`, opacity: 0.9, offset: 0.78 },
+                { transform: `translate(10px, -${screenH}px) scale(0.75) rotate(-3deg)`, opacity: 0 }
+            ], {
+                duration: 5600,
+                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                fill: 'forwards'
+            });
+
+            setTimeout(() => {
+                wrapper.remove();
+            }, 6000);
+
+            showToast(`Lantern released into the sky: "${wishText}" 🏮✨`);
             input.value = '';
         }
 
-        // --- 7. CHAPTER 5: THAPPAD & 1-SECOND SPARKLE BURST + LO.MP4 POPUP ---
+        // --- 6. CHAPTER 5: THAPPAD & SPARKLE BURST + ROSE VIDEO POPUP ---
         let thappadCount = 0;
         const thappadReplies = [
             "Ouch! Okay, 100% deserved tha yeh 😭",
@@ -998,7 +1136,6 @@
             document.getElementById('thappadCounterText').textContent = `Thappad counter: ${thappadCount} clicks`;
         }
 
-        // 1-Second Full-Screen Sparkle Burst Effect
         function triggerOneSecondSparkleBurst(callback) {
             const canvas = document.getElementById('sparkleBurstCanvas');
             const ctx = canvas.getContext('2d');
@@ -1025,7 +1162,7 @@
             }
 
             const startTime = performance.now();
-            const duration = 1000; // 1 second sparkle burst
+            const duration = 1000;
 
             function animateBurst(now) {
                 const elapsed = now - startTime;
@@ -1056,13 +1193,11 @@
                     if (callback) callback();
                 }
             }
-
             requestAnimationFrame(animateBurst);
         }
 
         function lightPhuljhariAndShowRose() {
             playChime(987.77);
-
             const replySec = document.getElementById('replySection');
             replySec.classList.remove('hidden');
 
@@ -1071,6 +1206,14 @@
                 const video = document.getElementById('rosePopupVideo');
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
+
+                // Pause background music while rose video plays
+                if (song && !song.paused) {
+                    wasPlayingBeforeVideo = true;
+                    song.pause();
+                } else {
+                    wasPlayingBeforeVideo = false;
+                }
 
                 if (video) {
                     video.currentTime = 0;
@@ -1094,13 +1237,19 @@
             modal.classList.add('hidden');
             modal.classList.remove('flex');
 
+            // Resume background music after closing rose modal
+            if (wasPlayingBeforeVideo && song) {
+                song.play().catch(() => {});
+                wasPlayingBeforeVideo = false;
+            }
+
             const replySec = document.getElementById('replySection');
             if (replySec) {
                 replySec.scrollIntoView({ behavior: 'smooth' });
             }
         }
 
-        // --- 8. 1-TAP REPLY DRAWER ---
+        // --- 7. 1-TAP REPLY DRAWER ---
         function selectReplyChip(txt) {
             document.getElementById('customReplyText').value = txt;
             playChime(523.25);
@@ -1123,90 +1272,5 @@
             showToast("Reply copied to clipboard! Paste & send it across 💌");
         }
     </script>
-   <!-- Background Music Player (Auto-Play on First Interaction) -->
-<audio id="bgRomanticSong" src="song.mp3" preload="auto" loop></audio>
-
-  <script>
-  (function() {
-    const song = document.getElementById('bgRomanticSong');
-    const START_TIME = 21; 
-    song.volume = 0.75;
-    let hasStarted = false;
-
-    song.addEventListener('loadedmetadata', () => {
-      song.currentTime = START_TIME;
-    });
-
-    song.addEventListener('ended', () => {
-      song.currentTime = START_TIME;
-      song.play();
-    });
-
-    // Screen par kahin bhi touch ya click karte hi gaana shuru
-    function triggerAutoPlayOnInteraction() {
-      if (!hasStarted) {
-        if (song.currentTime < START_TIME) {
-          song.currentTime = START_TIME;
-        }
-        song.play().then(() => {
-          hasStarted = true;
-          updateMusicButtonUI(true);
-          // Event listeners hata do taaki baar-baar trigger na ho
-          ['click', 'touchstart', 'pointerdown', 'keydown'].forEach(evt => {
-            window.removeEventListener(evt, triggerAutoPlayOnInteraction);
-          });
-        }).catch(() => {});
-      }
-    }
-
-    // Sabhi possible user interaction events par lagaa do
-    ['click', 'touchstart', 'pointerdown', 'keydown'].forEach(evt => {
-      window.addEventListener(evt, triggerAutoPlayOnInteraction, { passive: true });
-    });
-
-    function updateMusicButtonUI(isPlaying) {
-      const buttons = document.querySelectorAll('button');
-      buttons.forEach(btn => {
-        if (btn.innerText.includes('Chimes') || btn.innerText.includes('Music')) {
-          btn.innerHTML = isPlaying ? '🎵 Music: On' : '🔇 Music: Off';
-          if (isPlaying) {
-            btn.className = "px-3 py-1.5 rounded-full text-[11px] font-semibold bg-amberdiya/30 border border-amberdiya/50 text-marigold transition whitespace-nowrap shrink-0 flex items-center space-x-1";
-          } else {
-            btn.className = "px-3 py-1.5 rounded-full text-[11px] font-semibold bg-emeraldcustom/30 border border-emeraldcustom/50 text-emerald-300 transition whitespace-nowrap shrink-0 flex items-center space-x-1";
-          }
-        }
-      });
-    }
-
-    document.addEventListener('click', function(e) {
-      const btn = e.target.closest('button');
-      if (btn && (btn.innerText.includes('Chimes') || btn.innerText.includes('Music'))) {
-        e.stopImmediatePropagation();
-        if (song.paused) {
-          if (song.currentTime < START_TIME) song.currentTime = START_TIME;
-          song.play();
-          hasStarted = true;
-          updateMusicButtonUI(true);
-        } else {
-          song.pause();
-          hasStarted = false;
-          updateMusicButtonUI(false);
-        }
-      }
-    }, true);
-
-    document.querySelectorAll('video').forEach(video => {
-      video.addEventListener('play', () => {
-        if (!song.paused) song.pause();
-      });
-      video.addEventListener('pause', () => {
-        if (hasStarted) song.play();
-      });
-      video.addEventListener('ended', () => {
-        if (hasStarted) song.play();
-      });
-    });
-  })();
-</script>
 </body>
 </html>
